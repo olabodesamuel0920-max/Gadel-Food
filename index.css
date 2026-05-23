@@ -1927,3 +1927,39 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   16. FAQ Section Styling
+   ========================================================================== */
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    transition: var(--transition-medium);
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(30, 107, 71, 0.15);
+    box-shadow: var(--shadow-medium);
+}
+
+.faq-question {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-green-dark);
+    margin-bottom: 8px;
+}
+
+.faq-answer {
+    font-size: 0.925rem;
+    color: var(--color-charcoal-light);
+    line-height: 1.6;
+}
+
