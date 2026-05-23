@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadel Foods — Premium Foodstuff Concierge for FUTA Students</title>
+    <meta name="description" content="Get stress-free foodstuff shopping, custom student bundles, smart bulk buying, and personalized budget planning. Specially designed for Federal University of Technology, Akure (FUTA) students. Order directly via WhatsApp.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gadel Foods — Premium Foodstuff Concierge for FUTA Students">
+    <meta property="og:description" content="Skip the market stress. Custom bundles, bulk purchases, and budget consultation for FUTA students. Order via WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gadelfoods.demo">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Subtle Premium Preview Banner -->
+    <div class="top-preview-bar" id="preview-banner">
+        <p>✨ <strong>Demo Concept Preview:</strong> Final bundles, prices, pickup/delivery details, and availability are subject to direct confirmation by Gadel Foods. <button class="close-banner-btn" onclick="document.getElementById('preview-banner').style.display='none'">✕</button></p>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="navbar">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">Gadel</span> Foods
+            </a>
+            
+            <nav class="nav-menu" id="nav-links">
+                <a href="#why-us" class="nav-item">Why Us</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#bundles" class="nav-item">Sample Packs</a>
+                <a href="#budget-consult" class="nav-item">Budget Simulator</a>
+                <a href="#how-it-works" class="nav-item">How It Works</a>
+                <a href="#futa-zones" class="nav-item">Pickup & Areas</a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%2C%20I%20saw%20your%20landing%20page%20and%20would%20like%20to%20ask%20about%20your%20foodstuff%20services." target="_blank" class="btn btn-header btn-primary-green" id="header-whatsapp-cta">
+                    <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.59 1.978 14.113.953 11.5.953c-5.44 0-9.865 4.371-9.869 9.8-.001 1.836.52 3.631 1.508 5.204l-1.03 3.766 3.948-1.019zm13.111-7.854c-.11-.18-.403-.29-.844-.51-.44-.22-2.603-1.282-3.007-1.43-.404-.147-.697-.22-.99.22-.293.44-1.134 1.43-1.39 1.72-.257.29-.515.33-.956.11-.44-.22-1.86-.685-3.541-2.185-1.31-1.162-2.193-2.6-2.45-3.04-.257-.44-.027-.68.193-.898.198-.197.44-.51.66-.77.22-.26.294-.44.44-.73.15-.29.074-.55-.037-.77-.11-.22-.99-2.385-1.355-3.266-.357-.862-.719-.746-.989-.76-.256-.013-.55-.015-.844-.015-.294 0-.77.11-1.173.55-.404.44-1.54 1.51-1.54 3.68 0 2.17 1.579 4.26 1.8 4.55.22.29 3.102 4.737 7.518 6.64 1.05.45 1.87.72 2.51.92.1.03.2.04.28.04.59 0 1.22-.32 1.39-.75.17-.43.17-.8.12-.88-.05-.08-.2-.12-.64-.34z"/>
+                    </svg>
+                    <span>Message Concierge</span>
+                </a>
+                
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="container hero-grid">
+            
+            <div class="hero-content">
+                <span class="badge badge-hero-tag">🌾 Tailored for FUTA Students</span>
+                <h1 class="hero-title">Foodstuff shopping, <br><span class="text-gradient">made easier</span> for FUTA students.</h1>
+                <p class="hero-subtext">
+                    Bulk buying, budget guidance, and stress-free ordering — all through a simple, high-end WhatsApp-first concierge experience.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%21%20I%27m%20a%20FUTA%20student%20and%20I%27d%20like%20to%20order%20some%20foodstuffs." target="_blank" class="btn btn-lg btn-accent-gold" id="hero-order-cta">
+                        <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px; margin-right:8px;">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.59 1.978 14.113.953 11.5.953c-5.44 0-9.865 4.371-9.869 9.8-.001 1.836.52 3.631 1.508 5.204l-1.03 3.766 3.948-1.019zm13.111-7.854c-.11-.18-.403-.29-.844-.51-.44-.22-2.603-1.282-3.007-1.43-.404-.147-.697-.22-.99.22-.293.44-1.134 1.43-1.39 1.72-.257.29-.515.33-.956.11-.44-.22-1.86-.685-3.541-2.185-1.31-1.162-2.193-2.6-2.45-3.04-.257-.44-.027-.68.193-.898.198-.197.44-.51.66-.77.22-.26.294-.44.44-.73.15-.29.074-.55-.037-.77-.11-.22-.99-2.385-1.355-3.266-.357-.862-.719-.746-.989-.76-.256-.013-.55-.015-.844-.015-.294 0-.77.11-1.173.55-.404.44-1.54 1.51-1.54 3.68 0 2.17 1.579 4.26 1.8 4.55.22.29 3.102 4.737 7.518 6.64 1.05.45 1.87.72 2.51.92.1.03.2.04.28.04.59 0 1.22-.32 1.39-.75.17-.43.17-.8.12-.88-.05-.08-.2-.12-.64-.34z"/>
+                        </svg>
+                        <span>Order on WhatsApp</span>
+                    </a>
+                    <a href="#bundles" class="btn btn-lg btn-outline-white">View Sample Bundles</a>
+                </div>
+                
+                <!-- Floating Trust Cards Grid -->
+                <div class="hero-trust-grid">
+                    <div class="trust-pill">
+                        <span class="trust-icon">🎓</span>
+                        <span>Built for FUTA Students</span>
+                    </div>
+                    <div class="trust-pill">
+                        <span class="trust-icon">📊</span>
+                        <span>Budget-friendly Planning</span>
+                    </div>
+                    <div class="trust-pill">
+                        <span class="trust-icon">📦</span>
+                        <span>Bulk Buying Support</span>
+                    </div>
+                    <div class="trust-pill">
+                        <span class="trust-icon">💬</span>
+                        <span>WhatsApp-first Ordering</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual-area">
+                <div class="hero-image-wrapper">
+                    <img src="assets/gadel_foods_hero.png" alt="Gadel Foods Premium Grocery Composition" class="hero-main-img">
+                    <div class="glass-overlay"></div>
+                    
+                    <!-- Premium Float Cards -->
+                    <div class="float-card float-card-1 glass-card">
+                        <span class="float-dot text-gold">●</span>
+                        <div class="float-card-content">
+                            <span class="float-label">Concierge Assistant</span>
+                            <span class="float-value">Budget Consultation Active</span>
+                        </div>
+                    </div>
+                    
+                    <div class="float-card float-card-2 glass-card">
+                        <span class="float-dot text-green">●</span>
+                        <div class="float-card-content">
+                            <span class="float-label">FUTA Hub Pickup</span>
+                            <span class="float-value">Easy Campus Handover</span>
+                        </div>
+                    </div>
+                    
+                    <div class="float-card float-card-3 glass-card">
+                        <div class="float-card-content" style="text-align: center; width: 100%;">
+                            <span class="float-tag">Demo Presentation Visual Only</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Why Gadel Foods Section -->
+    <section class="section section-dark-green" id="why-us">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag-light">WHY GADEL FOODS</span>
+                <h2 class="section-title text-white">Market stress shouldn't get <br>in the way of your studies.</h2>
+                <p class="section-subtitle text-cream-muted">
+                    We helps FUTA students bypass the heat, noise, and price negotiations of local markets. Plan your foodstuff spending intelligently, combine buying power with friends, and shop smarter.
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3 class="feature-title text-white">Avoid Market Stress</h3>
+                    <p class="feature-text text-cream-muted">
+                        No more long weekend trips to noisy markets in Akure. Save your energy for classes and let us compile your groceries professionally.
+                    </p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title text-white">Better Budget Control</h3>
+                    <p class="feature-text text-cream-muted">
+                        Unsure how to make your monthly allowance cover meals? Our concierge works with your budget to plan exactly what foodstuffs make sense.
+                    </p>
+                </div>
+                
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title text-white">Buy Smarter In Bulk</h3>
+                    <p class="feature-text text-cream-muted">
+                        Maximize your purchasing power by splitting heavy sacks of rice, beans, or tubs of oil with roommates or friends.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Gadel Foods Helps With Section -->
+    <section class="section section-cream" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag-dark">WHAT WE HELP WITH</span>
+                <h2 class="section-title text-charcoal">Smart foodstuff solutions for student life</h2>
+                <p class="section-subtitle text-charcoal-muted">
+                    Gadel Foods is more than a simple food listing; it's a premium, student-focused foodstuffs concierge customized around your exact constraints.
+                </p>
+            </div>
+            
+            <div class="grid grid-2-2">
+                <div class="service-card glass-card-white">
+                    <div class="service-details">
+                        <span class="service-number">01</span>
+                        <h3 class="service-title">Bulk Foodstuff Buying</h3>
+                        <p class="service-text">
+                            We Source staple foodstuffs like grains, tubers, and cooking oils. Share the load and cost with classmates or roommates to get bulk rates.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-card-white">
+                    <div class="service-details">
+                        <span class="service-number">02</span>
+                        <h3 class="service-title">Budget Consultation</h3>
+                        <p class="service-text">
+                            Tell us what your allowance looks like, and we'll suggest a customized layout of essential foodstuffs to ensure you eat balanced meals all month.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-card-white">
+                    <div class="service-details">
+                        <span class="service-number">03</span>
+                        <h3 class="service-title">Student-Friendly Bundles</h3>
+                        <p class="service-text">
+                            Pre-arranged, thoughtfully structured sample configurations designed around the typical student kitchen setup and dietary needs.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-card-white">
+                    <div class="service-details">
+                        <span class="service-number">04</span>
+                        <h3 class="service-title">WhatsApp Ordering</h3>
+                        <p class="service-text">
+                            No complex checkout systems or heavy apps. Discuss your needs, confirm real-time pricing and stock, and coordinate pickup or delivery discussions all on WhatsApp.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Student Bundles Section -->
+    <section class="section section-light-green-bg" id="bundles">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag-dark">CURATED CONFIGURATIONS</span>
+                <h2 class="section-title text-charcoal">Sample Student Bundles</h2>
+                <p class="section-subtitle text-charcoal-muted">
+                    Explore these curated concepts showing how typical foodstuffs fit together. All bundles can be customized, and final availability/pricing are confirmed directly via WhatsApp before you order.
+                </p>
+            </div>
+            
+            <div class="grid grid-2-2" id="bundles-grid">
+                
+                <!-- Card 1: Starter Pack -->
+                <div class="bundle-card glass-card-white" data-bundle="starter">
+                    <div class="bundle-img-container">
+                        <img src="assets/starter_pack.png" alt="Starter Pack Visual" class="bundle-img">
+                        <span class="bundle-badge badge-starter">Sample Bundle</span>
+                    </div>
+                    <div class="bundle-content">
+                        <div class="bundle-meta">
+                            <h3 class="bundle-title">Starter Pack</h3>
+                            <span class="bundle-price-tag">₦12,500 <small class="demo-marker">Demo Est.</small></span>
+                        </div>
+                        <p class="bundle-desc">Perfect for students who need basic survival staples to keep their kitchen running without heavy cooking burdens.</p>
+                        
+                        <div class="bundle-items-preview">
+                            <span class="item-tag">Rice (3kg)</span>
+                            <span class="item-tag">Beans (2kg)</span>
+                            <span class="item-tag">Veg Oil (1L)</span>
+                            <span class="item-tag">Noodles (5pcs)</span>
+                            <span class="item-tag">Spaghetti (2pcs)</span>
+                            <span class="item-tag">Seasoning Cube Pack</span>
+                        </div>
+                        
+                        <div class="bundle-footer">
+                            <button class="btn btn-sm btn-outline-green btn-full-mobile btn-configure" onclick="openConfigurator('starter')">Configure Sample</button>
+                            <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%21%20I%20am%20interested%20in%20discussing%20the%20Starter%20Pack%20bundle%20(Demo%20Est.%20%E2%82%A612%2C500).%20Please%20let%20me%20know%20its%20availability." target="_blank" class="btn btn-sm btn-accent-gold btn-full-mobile">WhatsApp Inquiry</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Weekly Foodstuff Pack -->
+                <div class="bundle-card glass-card-white" data-bundle="weekly">
+                    <div class="bundle-img-container">
+                        <img src="assets/weekly_pack.png" alt="Weekly Foodstuff Pack Visual" class="bundle-img">
+                        <span class="bundle-badge badge-weekly">Sample Bundle</span>
+                    </div>
+                    <div class="bundle-content">
+                        <div class="bundle-meta">
+                            <h3 class="bundle-title">Weekly Foodstuff Pack</h3>
+                            <span class="bundle-price-tag">₦24,000 <small class="demo-marker">Demo Est.</small></span>
+                        </div>
+                        <p class="bundle-desc">Designed to provide a healthy balance of everyday grains, plant proteins, and fresh sauce ingredients for one student.</p>
+                        
+                        <div class="bundle-items-preview">
+                            <span class="item-tag">Rice (5kg)</span>
+                            <span class="item-tag">Beans (3kg)</span>
+                            <span class="item-tag">Palm Oil (1L)</span>
+                            <span class="item-tag">Garri (3kg)</span>
+                            <span class="item-tag">Eggs (1 Crate)</span>
+                            <span class="item-tag">Tomatoes & Peppers (Fresh Mix)</span>
+                        </div>
+                        
+                        <div class="bundle-footer">
+                            <button class="btn btn-sm btn-outline-green btn-full-mobile btn-configure" onclick="openConfigurator('weekly')">Configure Sample</button>
+                            <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%21%20I%20am%20interested%20in%20discussing%20the%20Weekly%20Foodstuff%20Pack%20(Demo%20Est.%20%E2%82%A624%2C000).%20Please%20let%20me%20know%20its%20availability." target="_blank" class="btn btn-sm btn-accent-gold btn-full-mobile">WhatsApp Inquiry</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Roommate Bulk Pack -->
+                <div class="bundle-card glass-card-white" data-bundle="roommate">
+                    <div class="bundle-img-container">
+                        <img src="assets/roommate_bulk_pack.png" alt="Roommate Bulk Pack Visual" class="bundle-img">
+                        <span class="bundle-badge badge-roommate">Sample Bundle</span>
+                    </div>
+                    <div class="bundle-content">
+                        <div class="bundle-meta">
+                            <h3 class="bundle-title">Roommate Bulk Pack</h3>
+                            <span class="bundle-price-tag">₦48,500 <small class="demo-marker">Demo Est.</small></span>
+                        </div>
+                        <p class="bundle-desc">Combine budgets with your roommate! Get wholesale rates on large quantities of grains, tubers, and essential oils.</p>
+                        
+                        <div class="bundle-items-preview">
+                            <span class="item-tag">Rice (10kg Sack)</span>
+                            <span class="item-tag">Beans (5kg Sack)</span>
+                            <span class="item-tag">Yams (5 Tubers)</span>
+                            <span class="item-tag">Palm Oil (2L)</span>
+                            <span class="item-tag">Veg Oil (2L)</span>
+                            <span class="item-tag">Spaghetti (1 Carton)</span>
+                            <span class="item-tag">Crate of Eggs</span>
+                        </div>
+                        
+                        <div class="bundle-footer">
+                            <button class="btn btn-sm btn-outline-green btn-full-mobile btn-configure" onclick="openConfigurator('roommate')">Configure Sample</button>
+                            <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%21%20My%20roommate%20and%20I%20are%20interested%20in%20discussing%20the%20Roommate%20Bulk%20Pack%20(Demo%20Est.%20%E2%82%A648%2C500).%20Please%20let%20me%20know%20its%20availability." target="_blank" class="btn btn-sm btn-accent-gold btn-full-mobile">WhatsApp Inquiry</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Custom Budget Pack -->
+                <div class="bundle-card glass-card-white" data-bundle="custom">
+                    <div class="bundle-img-container">
+                        <img src="assets/custom_budget_pack.png" alt="Custom Budget Pack Visual" class="bundle-img">
+                        <span class="bundle-badge badge-custom">Flexible Demo Concept</span>
+                    </div>
+                    <div class="bundle-content">
+                        <div class="bundle-meta">
+                            <h3 class="bundle-title">Custom Budget Pack</h3>
+                            <span class="bundle-price-tag">₦ Flexible <small class="demo-marker">Your Budget</small></span>
+                        </div>
+                        <p class="bundle-desc">No rigid packages here. Let us know exactly how much you have set aside, and we'll build a tailored grocery configuration that maximizes every Naira.</p>
+                        
+                        <div class="bundle-items-preview">
+                            <span class="item-tag">Custom Grains Selection</span>
+                            <span class="item-tag">Preferred Tubers</span>
+                            <span class="item-tag">Staple Seasonings</span>
+                            <span class="item-tag">Protein Toggles</span>
+                            <span class="item-tag">Adjustable Quantities</span>
+                        </div>
+                        
+                        <div class="bundle-footer" style="margin-top: auto;">
+                            <a href="#budget-consult" class="btn btn-sm btn-outline-green btn-full-mobile" style="text-align: center;">Try Budget Simulator</a>
+                            <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%21%20I%27d%20like%20to%20consult%20about%20a%20Custom%20Budget%20Pack%20tailored%20to%20my%20specific%20needs%20and%20foodstuff%20list." target="_blank" class="btn btn-sm btn-accent-gold btn-full-mobile">WhatsApp Consultation</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <p class="sample-bundles-disclaimer text-center text-charcoal-muted">
+                ⚠️ *Note: Pack images are illustrative sample presentations only. Individual items can be added, removed, or swapped to match seasonal availability. Final prices are calculated and confirmed before your order is processed.*
+            </p>
+        </div>
+    </section>
+
+    <!-- Budget Consultation Section -->
+    <section class="section section-cream" id="budget-consult">
+        <div class="container">
+            <div class="grid grid-2-1 align-center">
+                
+                <div class="budget-info">
+                    <span class="section-tag-dark">PERSONALIZED ESTIMATES</span>
+                    <h2 class="section-title text-charcoal">Not sure what your budget can cover?</h2>
+                    <p class="section-subtitle text-charcoal-muted" style="margin-bottom: 24px;">
+                        Tell Gadel Foods your planned budget, eating habits, and foodstuff needs. We will help suggest what makes the most sense before you buy.
+                    </p>
+                    
+                    <div class="budget-bullet-list">
+                        <div class="bullet-item">
+                            <span class="bullet-check">✓</span>
+                            <div>
+                                <strong>Lightweight & Dynamic:</strong> Test different price points to see a conceptual breakdown of foodstuffs immediately.
+                            </div>
+                        </div>
+                        <div class="bullet-item">
+                            <span class="bullet-check">✓</span>
+                            <div>
+                                <strong>Pre-composed WhatsApp Routing:</strong> Generate a direct text format summarizing your selection to discuss with our concierge instantly.
+                            </div>
+                        </div>
+                        <div class="bullet-item">
+                            <span class="bullet-check">✓</span>
+                            <div>
+                                <strong>Flexible Swapping:</strong> Use the recommendations as a starting blueprint, then fine-tune items with Gadel Foods.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Budget Calculator Widget -->
+                <div class="calculator-wrapper glass-card-white" id="budget-widget">
+                    <div class="calculator-header">
+                        <span class="calc-badge">📊 Foodstuff Budget Simulator</span>
+                        <h3>Estimate Your Setup</h3>
+                        <p class="calc-warning">Interactive Concept Demo Preview Only</p>
+                    </div>
+                    
+                    <div class="calc-body">
+                        <!-- Step 1: Budget Slider -->
+                        <div class="calc-control-group">
+                            <label for="budget-slider" class="calc-label">
+                                <span>Target Budget (₦):</span>
+                                <strong id="budget-display">₦25,000</strong>
+                            </label>
+                            <input type="range" id="budget-slider" min="15000" max="60000" step="5000" value="25000" class="slider-input">
+                            <div class="slider-ticks">
+                                <span>₦15k</span>
+                                <span>₦30k</span>
+                                <span>₦45k</span>
+                                <span>₦60k</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Food Preference -->
+                        <div class="calc-control-group">
+                            <label class="calc-label">Food Preference:</label>
+                            <div class="preference-options">
+                                <label class="preference-btn active">
+                                    <input type="radio" name="preference" value="staples" checked>
+                                    <span>Balanced Mix</span>
+                                </label>
+                                <label class="preference-btn">
+                                    <input type="radio" name="preference" value="swallows">
+                                    <span>Swallows & Soups</span>
+                                </label>
+                                <label class="preference-btn">
+                                    <input type="radio" name="preference" value="quick">
+                                    <span>Rice & Pasta</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Student Arrangement -->
+                        <div class="calc-control-group">
+                            <label class="calc-label">Arrangement:</label>
+                            <div class="arrangement-grid">
+                                <label class="arrangement-btn active">
+                                    <input type="radio" name="arrangement" value="solo" checked>
+                                    <div class="arr-content">
+                                        <strong>Solo</strong>
+                                        <small>Just for me</small>
+                                    </div>
+                                </label>
+                                <label class="arrangement-btn">
+                                    <input type="radio" name="arrangement" value="duo">
+                                    <div class="arr-content">
+                                        <strong>Duo</strong>
+                                        <small>Share with 1 roomie</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Simulation Result Preview -->
+                        <div class="calc-result-box glass-card">
+                            <span class="result-box-header">💡 Demo Setup Recommendation</span>
+                            <div class="result-details">
+                                <div class="result-item">
+                                    <span class="result-lbl">Recommended Blueprint:</span>
+                                    <strong id="rec-blueprint-name" class="text-green">Weekly Foodstuff Pack (Modded)</strong>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-lbl">Estimated Grains & Tubers:</span>
+                                    <span id="rec-grains">Rice (5kg), Beans (2kg), Garri (2kg)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-lbl">Estimated Oils & Liquids:</span>
+                                    <span id="rec-liquids">Palm Oil (1L), Vegetable Oil (1L)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-lbl">Suggested Extras:</span>
+                                    <span id="rec-extras">1/2 Crate of Eggs, Spaghetti (2pcs)</span>
+                                </div>
+                            </div>
+                            <p class="calc-demo-notice">*Sample configuration. Gadel Foods will adjust quantities based on market rates when you message.*</p>
+                        </div>
+                        
+                        <!-- CTA Routing -->
+                        <a href="#" target="_blank" class="btn btn-accent-gold btn-full btn-calc-whatsapp" id="calc-whatsapp-cta">
+                            <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px; margin-right:8px;">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.59 1.978 14.113.953 11.5.953c-5.44 0-9.865 4.371-9.869 9.8-.001 1.836.52 3.631 1.508 5.204l-1.03 3.766 3.948-1.019zm13.111-7.854c-.11-.18-.403-.29-.844-.51-.44-.22-2.603-1.282-3.007-1.43-.404-.147-.697-.22-.99.22-.293.44-1.134 1.43-1.39 1.72-.257.29-.515.33-.956.11-.44-.22-1.86-.685-3.541-2.185-1.31-1.162-2.193-2.6-2.45-3.04-.257-.44-.027-.68.193-.898.198-.197.44-.51.66-.77.22-.26.294-.44.44-.73.15-.29.074-.55-.037-.77-.11-.22-.99-2.385-1.355-3.266-.357-.862-.719-.746-.989-.76-.256-.013-.55-.015-.844-.015-.294 0-.77.11-1.173.55-.404.44-1.54 1.51-1.54 3.68 0 2.17 1.579 4.26 1.8 4.55.22.29 3.102 4.737 7.518 6.64 1.05.45 1.87.72 2.51.92.1.03.2.04.28.04.59 0 1.22-.32 1.39-.75.17-.43.17-.8.12-.88-.05-.08-.2-.12-.64-.34z"/>
+                            </svg>
+                            <span>Send Budget Setup to WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-dark-green" id="how-it-works">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag-light">THE CONCIERGE WORKFLOW</span>
+                <h2 class="section-title text-white">How it works in 4 easy steps</h2>
+                <p class="section-subtitle text-cream-muted">
+                    Skipping market stress and planning your budget shouldn't require complex app registrations. We make it entirely direct and simple.
+                </p>
+            </div>
+            
+            <div class="steps-flow">
+                <div class="step-item">
+                    <div class="step-num-circle">1</div>
+                    <h3 class="step-title text-white">Submit Budget or Needs</h3>
+                    <p class="step-text text-cream-muted">
+                        Use our Budget Simulator widget above to outline a budget or send us your customized custom foodstuff shopping list directly on WhatsApp.
+                    </p>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-num-circle">2</div>
+                    <h3 class="step-title text-white">Select a Sample Pack</h3>
+                    <p class="step-text text-cream-muted">
+                        Choose one of our preset sample configurations (Starter, Weekly, or Roommate Bulk Pack) or customize the item checklists to fit your preferences.
+                    </p>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-num-circle">3</div>
+                    <h3 class="step-title text-white">Confirm Price & Availability</h3>
+                    <p class="step-text text-cream-muted">
+                        Our concierge responds on WhatsApp with direct market updates, confirms foodstuff availability, and shares a final transparent price calculation.
+                    </p>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-num-circle">4</div>
+                    <h3 class="step-title text-white">Arrange FUTA Area Handover</h3>
+                    <p class="step-text text-cream-muted">
+                        Coordinate convenient pickup options around FUTA gates or discuss custom off-campus residential pickup/delivery possibilities directly with our concierge.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits / Trust Cards Section -->
+    <section class="section section-cream" id="benefits">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag-dark">THE GADEL BENEFIT</span>
+                <h2 class="section-title text-charcoal">Why FUTA students order through us</h2>
+                <p class="section-subtitle text-charcoal-muted">
+                    We focus exclusively on providing a high-trust, personalized grocery shopping service that aligns with the realistic pace of academic life.
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="trust-card glass-card-white">
+                    <div class="trust-icon-box text-green">✓</div>
+                    <h3 class="trust-title">Reduces Market Stress</h3>
+                    <p class="trust-text">Avoid sweaty, crowded local Akure markets. Let our dedicated team do the physical footwork for you.</p>
+                </div>
+                
+                <div class="trust-card glass-card-white">
+                    <div class="trust-icon-box text-green">✓</div>
+                    <h3 class="trust-title">Helps Students Plan Better</h3>
+                    <p class="trust-text">Stop impulse buying. Map out your monthly feeding allowance in advance with structured ingredient bundles.</p>
+                </div>
+                
+                <div class="trust-card glass-card-white">
+                    <div class="trust-icon-box text-green">✓</div>
+                    <h3 class="trust-title">Supports Bulk Buying</h3>
+                    <p class="trust-text">Split large food bags with roommate circles easily to obtain lower per-unit cost on critical ingredients.</p>
+                </div>
+                
+                <div class="trust-card glass-card-white">
+                    <div class="trust-icon-box text-green">✓</div>
+                    <h3 class="trust-title">Saves Academic Time</h3>
+                    <p class="trust-text">Reclaim hours of market shopping and preparation, allowing you to focus entirely on study and campus activities.</p>
+                </div>
+                
+                <div class="trust-card glass-card-white">
+                    <div class="trust-icon-box text-green">✓</div>
+                    <h3 class="trust-title">Makes Foodstuff Easier</h3>
+                    <p class="trust-text">No complicated checkout software. Talk to a real human concierge instantly via WhatsApp messaging.</p>
+                </div>
+                
+                <div class="trust-card glass-card-white highlight-trust-card">
+                    <div class="trust-icon-box text-gold">🌾</div>
+                    <h3 class="trust-title text-white">Direct FUTA Customization</h3>
+                    <p class="trust-text text-cream-muted">Ground support built strictly around Akure off-campus hostels and student gates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUTA Location Zones Section -->
+    <section class="section section-light-green-bg" id="futa-zones">
+        <div class="container">
+            <div class="grid grid-2-1 align-center">
+                
+                <div class="location-visual">
+                    <div class="mock-map-container glass-card-white">
+                        <div class="map-header">
+                            <span class="dot-indicator green"></span>
+                            <strong>FUTA Student Pickup Areas Demo Map</strong>
+                        </div>
+                        <div class="map-body-graphic">
+                            <div class="map-node node-north" onclick="selectZone('north')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">North Gate</span>
+                            </div>
+                            <div class="map-node node-south active" onclick="selectZone('south')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">South Gate</span>
+                            </div>
+                            <div class="map-node node-west" onclick="selectZone('west')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">West Gate</span>
+                            </div>
+                            <div class="map-node node-offcampus" onclick="selectZone('offcampus')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">Obanla / Apatapiti</span>
+                            </div>
+                            
+                            <div class="map-legend">
+                                <span>📍 Click node to view setup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-info">
+                    <span class="section-tag-dark">CAMPUS CONVENIENCE</span>
+                    <h2 class="section-title text-charcoal">FUTA Pickup & Coordination Areas</h2>
+                    <p class="section-subtitle text-charcoal-muted">
+                        We facilitate easy foodstuff handovers at student-frequented locations. Simply coordinate the details on WhatsApp with Gadel Foods.
+                    </p>
+                    
+                    <div class="zone-details-card glass-card-white" id="zone-details-box">
+                        <h4 id="zone-title" class="text-green">🏫 South Gate Area (Hostel Hub)</h4>
+                        <p id="zone-description">Excellent pickup point for students living in South Gate hostels, Apatapiti, and close off-campus apartments. Easily coordinate timing on WhatsApp.</p>
+                        <div class="zone-meta-tags">
+                            <span class="zone-tag">Standard Pickup Hub</span>
+                            <span class="zone-tag" id="zone-status">Flexible Pickup/Delivery Coordination</span>
+                        </div>
+                    </div>
+                    
+                    <p class="location-disclaimer text-charcoal-muted">
+                        *Note: Exact handovers, off-campus hostel drop-offs, and pickup schedules must be negotiated and confirmed directly with Gadel Foods on WhatsApp. We do not support live delivery tracking.*
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section section-dark-green text-center relative-container" id="cta-section">
+        <div class="cta-glow"></div>
+        <div class="container relative-content">
+            <span class="badge badge-hero-tag" style="background: rgba(229, 169, 59, 0.15); color: #E5A93B; margin: 0 auto 16px auto;">🚀 START SHOPPING SMARTER</span>
+            <h2 class="section-title text-white" style="margin-bottom: 16px;">Ready to shop foodstuffs with less stress?</h2>
+            <p class="section-subtitle text-cream-muted" style="margin: 0 auto 32px auto; max-width: 600px;">
+                View our sample student configurations, adjust item checklists, estimate what your allowance can support, and finalize everything directly with Gadel Foods on WhatsApp.
+            </p>
+            
+            <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%21%20I%20saw%20your%20landing%20page%20demo%20and%20I%27d%20like%20to%20consult%20about%20a%20foodstuff%20order." target="_blank" class="btn btn-lg btn-accent-gold" id="final-whatsapp-cta">
+                <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px; margin-right:8px;">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.59 1.978 14.113.953 11.5.953c-5.44 0-9.865 4.371-9.869 9.8-.001 1.836.52 3.631 1.508 5.204l-1.03 3.766 3.948-1.019zm13.111-7.854c-.11-.18-.403-.29-.844-.51-.44-.22-2.603-1.282-3.007-1.43-.404-.147-.697-.22-.99.22-.293.44-1.134 1.43-1.39 1.72-.257.29-.515.33-.956.11-.44-.22-1.86-.685-3.541-2.185-1.31-1.162-2.193-2.6-2.45-3.04-.257-.44-.027-.68.193-.898.198-.197.44-.51.66-.77.22-.26.294-.44.44-.73.15-.29.074-.55-.037-.77-.11-.22-.99-2.385-1.355-3.266-.357-.862-.719-.746-.989-.76-.256-.013-.55-.015-.844-.015-.294 0-.77.11-1.173.55-.404.44-1.54 1.51-1.54 3.68 0 2.17 1.579 4.26 1.8 4.55.22.29 3.102 4.737 7.518 6.64 1.05.45 1.87.72 2.51.92.1.03.2.04.28.04.59 0 1.22-.32 1.39-.75.17-.43.17-.8.12-.88-.05-.08-.2-.12-.64-.34z"/>
+                </svg>
+                <span>Message Gadel Foods on WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo text-white">
+                    <span class="logo-accent">Gadel</span> Foods
+                </a>
+                <p class="footer-desc text-cream-muted">
+                    Smart foodstuff concierge services customized for FUTA students. Skip the market stress, plan budgets efficiently, and purchase smarter.
+                </p>
+            </div>
+            
+            <div class="footer-links">
+                <h4 class="footer-title text-white">Quick Links</h4>
+                <a href="#why-us" class="footer-link">Why Us</a>
+                <a href="#services" class="footer-link">Services</a>
+                <a href="#bundles" class="footer-link">Sample Bundles</a>
+                <a href="#budget-consult" class="footer-link">Budget Simulator</a>
+                <a href="#futa-zones" class="footer-link">Pickup & Areas</a>
+            </div>
+
+            <div class="footer-contact">
+                <h4 class="footer-title text-white">FUTA Ground Operations</h4>
+                <p class="text-cream-muted" style="margin-bottom: 8px;">📍 Federal University of Technology, Akure, Ondo State.</p>
+                <p class="text-cream-muted">💬 WhatsApp-first concierge: +234 815 762 2574</p>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <div class="disclaimer-box text-center">
+                <p class="text-cream-muted" style="font-size: 12px; line-height: 1.5;">
+                    ⚠️ <strong>Preview Notice & Disclaimer:</strong> This landing page is a premium interactive demonstration. Gadel Foods is a custom foodstuff sourcing service. Sample configurations, listed items, prices (demo estimations), delivery, and pickup coordinates are for preview purposes only and must be officially confirmed directly with Gadel Foods on WhatsApp before placing any orders. We make no claims of live checkout, payment gateways, secure transactions, live shipping tracking, or guaranteed fixed rates.
+                </p>
+            </div>
+            <div class="footer-copyright text-center text-cream-muted" style="margin-top: 16px; font-size: 12px;">
+                &copy; 2026 Gadel Foods. All rights reserved. Built for FUTA Student Commerce.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile WhatsApp CTA -->
+    <div class="mobile-sticky-cta-bar" id="mobile-cta-bar">
+        <a href="https://wa.me/2348157622574?text=Hi%20Gadel%20Foods%2C%20I%20am%20a%20FUTA%20student%20and%20I%27d%20like%20to%20discuss%20ordering%20foodstuffs." target="_blank" class="sticky-whatsapp-btn">
+            <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.59 1.978 14.113.953 11.5.953c-5.44 0-9.865 4.371-9.869 9.8-.001 1.836.52 3.631 1.508 5.204l-1.03 3.766 3.948-1.019zm13.111-7.854c-.11-.18-.403-.29-.844-.51-.44-.22-2.603-1.282-3.007-1.43-.404-.147-.697-.22-.99.22-.293.44-1.134 1.43-1.39 1.72-.257.29-.515.33-.956.11-.44-.22-1.86-.685-3.541-2.185-1.31-1.162-2.193-2.6-2.45-3.04-.257-.44-.027-.68.193-.898.198-.197.44-.51.66-.77.22-.26.294-.44.44-.73.15-.29.074-.55-.037-.77-.11-.22-.99-2.385-1.355-3.266-.357-.862-.719-.746-.989-.76-.256-.013-.55-.015-.844-.015-.294 0-.77.11-1.173.55-.404.44-1.54 1.51-1.54 3.68 0 2.17 1.579 4.26 1.8 4.55.22.29 3.102 4.737 7.518 6.64 1.05.45 1.87.72 2.51.92.1.03.2.04.28.04.59 0 1.22-.32 1.39-.75.17-.43.17-.8.12-.88-.05-.08-.2-.12-.64-.34z"/>
+            </svg>
+            <span>WhatsApp Sourcing Concierge</span>
+        </a>
+    </div>
+
+    <!-- Reusable Premium Pack Configurator Drawer/Modal -->
+    <div class="configurator-modal" id="config-modal" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" onclick="closeConfigurator()"></div>
+        <div class="modal-container glass-card-white">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-tag" id="modal-pack-tag">Sample Configuration</span>
+                    <h3 class="modal-title" id="modal-pack-title">Configure Starter Pack</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closeConfigurator()" aria-label="Close modal">✕</button>
+            </div>
+            
+            <div class="modal-warning-bar">
+                📋 Adjust items below to preview details. Final pricing/availability confirmed on WhatsApp.
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-desc" id="modal-pack-desc">Select items you would like to include. This is an illustrative dynamic demo concept to structure your inquiry.</p>
+                
+                <div class="items-selection-header">
+                    <span>Staple Foodstuffs Checklist:</span>
+                    <button class="select-all-btn" id="modal-select-all" onclick="toggleAllItems()">Deselect All</button>
+                </div>
+                
+                <!-- Dynamic Items Container -->
+                <div class="modal-items-list" id="modal-items-container">
+                    <!-- Loaded dynamically via JavaScript -->
+                </div>
+                
+                <div class="modal-summary-box glass-card">
+                    <div class="summary-line">
+                        <span>Total Items Selected:</span>
+                        <strong id="modal-selected-count">0</strong>
+                    </div>
+                    <div class="summary-line font-large">
+                        <span>Demo Estimated Cost:</span>
+                        <strong class="text-green" id="modal-estimated-price">₦0</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-outline-green" onclick="closeConfigurator()">Back to Page</button>
+                <a href="#" target="_blank" class="btn btn-accent-gold btn-whatsapp-inquiry" id="modal-whatsapp-inquiry">
+                    <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px; margin-right:8px;">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.59 1.978 14.113.953 11.5.953c-5.44 0-9.865 4.371-9.869 9.8-.001 1.836.52 3.631 1.508 5.204l-1.03 3.766 3.948-1.019zm13.111-7.854c-.11-.18-.403-.29-.844-.51-.44-.22-2.603-1.282-3.007-1.43-.404-.147-.697-.22-.99.22-.293.44-1.134 1.43-1.39 1.72-.257.29-.515.33-.956.11-.44-.22-1.86-.685-3.541-2.185-1.31-1.162-2.193-2.6-2.45-3.04-.257-.44-.027-.68.193-.898.198-.197.44-.51.66-.77.22-.26.294-.44.44-.73.15-.29.074-.55-.037-.77-.11-.22-.99-2.385-1.355-3.266-.357-.862-.719-.746-.989-.76-.256-.013-.55-.015-.844-.015-.294 0-.77.11-1.173.55-.404.44-1.54 1.51-1.54 3.68 0 2.17 1.579 4.26 1.8 4.55.22.29 3.102 4.737 7.518 6.64 1.05.45 1.87.72 2.51.92.1.03.2.04.28.04.59 0 1.22-.32 1.39-.75.17-.43.17-.8.12-.88-.05-.08-.2-.12-.64-.34z"/>
+                    </svg>
+                    <span>Inquire About Selected Items</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="index.js"></script>
+</body>
+</html>
