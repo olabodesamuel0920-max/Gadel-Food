@@ -131,6 +131,39 @@ body {
 
 .section-dark-green {
     background-color: var(--color-green-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-dark-green::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(30, 107, 71, 0.25) 0%, rgba(5, 46, 28, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+    animation: floatGlow1 18s ease-in-out infinite;
+}
+
+.section-dark-green::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    right: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(229, 169, 59, 0.06) 0%, rgba(5, 46, 28, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+    animation: floatGlow2 22s ease-in-out infinite;
+}
+
+.section-dark-green .container {
+    position: relative;
+    z-index: 2;
 }
 
 .section-cream {
@@ -458,6 +491,40 @@ body {
     overflow: hidden;
 }
 
+@keyframes floatGlow1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.9;
+    }
+    33% {
+        transform: translate(40px, -60px) scale(1.1);
+        opacity: 1;
+    }
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes floatGlow2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50px, 50px) scale(1.15);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+}
+
 .hero-glow-1 {
     position: absolute;
     top: -200px;
@@ -467,6 +534,7 @@ body {
     background: radial-gradient(circle, rgba(30, 107, 71, 0.3) 0%, rgba(5, 46, 28, 0) 70%);
     z-index: 1;
     pointer-events: none;
+    animation: floatGlow1 15s ease-in-out infinite;
 }
 
 .hero-glow-2 {
@@ -478,6 +546,7 @@ body {
     background: radial-gradient(circle, rgba(229, 169, 59, 0.08) 0%, rgba(5, 46, 28, 0) 70%);
     z-index: 1;
     pointer-events: none;
+    animation: floatGlow2 20s ease-in-out infinite;
 }
 
 .hero-grid {
@@ -1404,6 +1473,21 @@ body {
 /* ==========================================================================
    12. Final CTA & Footer Styling
    ========================================================================== */
+@keyframes pulseCenterGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+}
+
 .cta-glow {
     position: absolute;
     top: 50%;
@@ -1413,6 +1497,8 @@ body {
     height: 300px;
     background: radial-gradient(circle, rgba(229, 169, 59, 0.1) 0%, rgba(5, 46, 28, 0) 70%);
     z-index: 1;
+    animation: pulseCenterGlow 12s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .main-footer {
