@@ -967,3 +967,60 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
+/* ==========================================================================
+   V3 Accessibility, Keyboard Focus, Overlay & Mobile Menu Transitions
+   ========================================================================== */
+
+/* Accessibility Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 10000;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Navigation Drawer Background Overlay */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 997; /* Just beneath the navigation menu */
+}
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Global Keyboard focus visible state */
+:focus-visible {
+    outline: 3px solid var(--secondary);
+    outline-offset: 3px;
+}
+
+/* Media query for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Media query for high contrast */
+@media (prefers-contrast: more) {
+    .btn, .service-card, .product-card, .whatsapp-chat-card {
+        border: 2px solid var(--charcoal-dark) !important;
+    }
+}
+

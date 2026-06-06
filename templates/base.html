@@ -93,6 +93,11 @@
     {% block styles %}{% endblock %}
 </head>
 <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
+    <!-- Mobile Drawer Background Overlay -->
+    <div class="nav-overlay" id="nav-overlay"></div>
 
     <!-- Header Navigation -->
     <header class="main-header" id="navbar">
@@ -115,7 +120,7 @@
                     <i class="fab fa-whatsapp"></i> Message Concierge
                 </a>
                 
-                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -125,7 +130,7 @@
     </header>
 
     <!-- Page Specific Main Content -->
-    <main>
+    <main id="main-content">
         {% block content %}{% endblock %}
     </main>
 

@@ -17,6 +17,7 @@ function initNavigation() {
     const mobileToggle = document.getElementById('mobile-toggle');
     const navLinks = document.getElementById('nav-links');
     const navItems = document.querySelectorAll('.nav-item');
+    const navOverlay = document.getElementById('nav-overlay');
 
     // 1a. Sticky scroll background blur/shadow logic
     window.addEventListener('scroll', () => {
@@ -27,20 +28,66 @@ function initNavigation() {
         }
     });
 
+    // Toggle menu drawers open/close
+    function openMenu() {
+        if (!navLinks || !mobileToggle) return;
+        navLinks.classList.add('active');
+        mobileToggle.classList.add('mobile-toggle-active');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        if (navOverlay) navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        if (!navLinks || !mobileToggle) return;
+        navLinks.classList.remove('active');
+        mobileToggle.classList.remove('mobile-toggle-active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        if (navOverlay) navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
     // 1b. Mobile menu drawer toggle
     if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileToggle.classList.toggle('mobile-toggle-active');
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
         // 1c. Close mobile drawer on item click
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileToggle.classList.remove('mobile-toggle-active');
-            });
+            item.addEventListener('click', closeMenu);
         });
+
+        // Close drawer on clicking the backdrop overlay
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeMenu);
+        }
+
+        // Close drawer on pressing the Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Touch swipe-to-close mobile menu
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchEndX - touchStartX;
+            // A swipe from left-to-right (diff > 80) slides the drawer off-screen back to the right
+            if (diff > 80 && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        }, { passive: true });
     }
 }
 
