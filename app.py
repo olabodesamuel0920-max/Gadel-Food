@@ -38,16 +38,16 @@ PRODUCTS = [
     {"id": 4, "name": "Garri", "price": 600, "unit": "per congo", "image": "garri.png", "category": "grains", "description": "Premium garri for eba and soaking"},
     {"id": 5, "name": "Golden Penny Spaghetti", "price": 1100, "unit": "per pack", "image": "golden-penny-spaghetti.jpg", "category": "pasta", "description": "Quality spaghetti from Golden Penny"},
     {"id": 6, "name": "Crown Spaghetti", "price": 1100, "unit": "per pack", "image": "crown-spaghetti.png", "category": "pasta", "description": "Crown spaghetti, student favorite"},
-    {"id": 7, "name": "Auntie B Spaghetti", "price": 900, "unit": "per pack", "image": "auntie-b-spaghetti.png", "category": "pasta", "description": "Affordable Auntie B spaghetti"},
+    {"id": 7, "name": "Auntie B Spaghetti", "price": 900, "unit": "per pack", "image": "auntie-b-spaghetti.jpg", "category": "pasta", "description": "Affordable Auntie B spaghetti"},
     {"id": 8, "name": "Mama's Pride Spaghetti", "price": 900, "unit": "per pack", "image": "mamas_pride_spaghetti.png", "category": "pasta", "description": "Mama's Pride quality pasta"},
-    {"id": 9, "name": "Indomie Table (Carton)", "price": 11000, "unit": "per carton", "image": "indomie.jpg", "category": "noodles", "description": "Full carton of Indomie instant noodles"},
-    {"id": 10, "name": "Tomato Seasoning (1 roll)", "price": 900, "unit": "per roll", "image": "tomato-seasoning.png", "category": "seasoning", "description": "Rich tomato seasoning mix for student meals"},
-    {"id": 11, "name": "Thyme (1 roll)", "price": 900, "unit": "per roll", "image": "tomato-seasoning.png", "category": "seasoning", "description": "Thyme seasoning for aromatic dishes"},
-    {"id": 12, "name": "Maggi Chicken Flavour", "price": 600, "unit": "per pack", "image": "tasty-cubes.png", "category": "seasoning", "description": "Maggi chicken seasoning cubes"},
-    {"id": 13, "name": "Salt", "price": 300, "unit": "per pack", "image": "salt.jpg", "category": "seasoning", "description": "Essential cooking salt"},
-    {"id": 14, "name": "Hot Pepper (1 roll)", "price": 700, "unit": "per roll", "image": "hot_pepper_powder.jpg", "category": "seasoning", "description": "Hot pepper for spicy dishes"},
-    {"id": 15, "name": "Palm Oil (1 bottle)", "price": 1500, "unit": "per bottle", "image": "palm-oil.png", "category": "oil", "description": "Pure palm oil for cooking"},
-    {"id": 16, "name": "Groundnut Oil (1 bottle)", "price": 2100, "unit": "per bottle", "image": "groundnut-oil.png", "category": "oil", "description": "Quality groundnut oil"}
+    {"id": 9, "name": "Indomie Table (Carton)", "price": 11000, "unit": "per carton", "image": "indomie.png", "category": "noodles", "description": "Full carton of Indomie instant noodles"},
+    {"id": 10, "name": "Gino Peppered Chicken (1 roll)", "price": 900, "unit": "per roll", "image": "tomato-seasoning.png", "category": "seasoning", "description": "Rich peppered chicken tomato seasoning mix"},
+    {"id": 11, "name": "Gino Party Jollof (1 roll)", "price": 900, "unit": "per roll", "image": "gino-party-jollof.png", "category": "seasoning", "description": "Gino Party Jollof seasoning mix"},
+    {"id": 12, "name": "Maggi Chicken Flavour", "price": 600, "unit": "per pack", "image": "tasty-cubes.jpg", "category": "seasoning", "description": "Maggi chicken seasoning cubes"},
+    {"id": 13, "name": "Salt", "price": 300, "unit": "per pack", "image": "salt.png", "category": "seasoning", "description": "Essential cooking salt"},
+    {"id": 14, "name": "Hot Pepper (1 roll)", "price": 700, "unit": "per roll", "image": "hot_pepper_powder.png", "category": "seasoning", "description": "Hot pepper for spicy dishes"},
+    {"id": 15, "name": "Palm Oil (1 bottle)", "price": 1500, "unit": "per bottle", "image": "palm-oil.jpg", "category": "oil", "description": "Pure palm oil for cooking"},
+    {"id": 16, "name": "Groundnut Oil (1 bottle)", "price": 2100, "unit": "per bottle", "image": "groundnut-oil.jpg", "category": "oil", "description": "Quality groundnut oil"}
 ]
 
 # =============================================================================
