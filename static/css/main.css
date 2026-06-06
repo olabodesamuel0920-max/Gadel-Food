@@ -685,7 +685,8 @@ h1, h2, h3, h4, h5, h6 {
     .mobile-toggle-active .bar:nth-child(2) { opacity: 0; }
     .mobile-toggle-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
     
-    .header-actions { display: none; }
+    .header-actions { display: flex; align-items: center; }
+    .header-actions .btn-header { display: none; }
     .nav-item { font-size: 1.25rem; }
     
     .grid-3, .grid-2-2 { grid-template-columns: 1fr; }

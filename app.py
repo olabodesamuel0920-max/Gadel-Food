@@ -61,12 +61,12 @@ PACKAGES = [
         "subtitle": "Single Student",
         "price": 10100,
         "items": [
-            {"name": "Nigerian Rice", "qty": "2 congos", "price": 4400},
-            {"name": "Garri", "qty": "2 congos", "price": 1200},
-            {"name": "Spaghetti (Mama's Pride)", "qty": "2 packs", "price": 1800},
-            {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100},
-            {"name": "Salt", "qty": "1 pack", "price": 300},
-            {"name": "Maggi (Terra Small)", "qty": "1 pack", "price": 300}
+            {"name": "Nigerian Rice", "qty": "2 congos", "price": 4400, "qty_val": 2, "unit": "congo", "unit_price": 2200},
+            {"name": "Garri", "qty": "2 congos", "price": 1200, "qty_val": 2, "unit": "congo", "unit_price": 600},
+            {"name": "Spaghetti (Mama's Pride)", "qty": "2 packs", "price": 1800, "qty_val": 2, "unit": "pack", "unit_price": 900},
+            {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100, "qty_val": 1, "unit": "bottle", "unit_price": 2100},
+            {"name": "Salt", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300},
+            {"name": "Maggi (Terra Small)", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300}
         ],
         "image": "rice_bucket.jpg",
         "description": "Perfect for students who need basic survival staples"
@@ -77,12 +77,12 @@ PACKAGES = [
         "subtitle": "Shared Living",
         "price": 21900,
         "items": [
-            {"name": "Nigerian Rice", "qty": "5 congos", "price": 11000},
-            {"name": "Garri", "qty": "4 congos", "price": 2400},
-            {"name": "Noodles (Half Carton)", "qty": "1 half", "price": 5500},
-            {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100},
-            {"name": "Salt", "qty": "1 pack", "price": 300},
-            {"name": "Maggi (Chicken Flavour)", "qty": "1 pack", "price": 600}
+            {"name": "Nigerian Rice", "qty": "5 congos", "price": 11000, "qty_val": 5, "unit": "congo", "unit_price": 2200},
+            {"name": "Garri", "qty": "4 congos", "price": 2400, "qty_val": 4, "unit": "congo", "unit_price": 600},
+            {"name": "Noodles (Half Carton)", "qty": "1 half", "price": 5500, "qty_val": 1, "unit": "half", "unit_price": 5500},
+            {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100, "qty_val": 1, "unit": "bottle", "unit_price": 2100},
+            {"name": "Salt", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300},
+            {"name": "Maggi (Chicken Flavour)", "qty": "1 pack", "price": 600, "qty_val": 1, "unit": "pack", "unit_price": 600}
         ],
         "image": "beans.jpg",
         "description": "Combine budgets with your roommate for better rates"
