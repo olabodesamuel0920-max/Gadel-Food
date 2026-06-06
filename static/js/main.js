@@ -125,37 +125,33 @@ function initScrollReveal() {
    3. Stats Counter Animation
    ========================================================================== */
 function initStatsCounter() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    const heroStats = document.querySelector('.hero-stats');
-    if (!heroStats || statNumbers.length === 0) return;
+    const statNums = document.querySelectorAll('.stat-num');
+    if (statNums.length === 0) return;
 
     const animateCounter = (el) => {
-        const target = el.textContent;
-        const numeric = parseInt(target.replace(/\D/g, ''));
-        const suffix = target.replace(/[0-9]/g, '');
-        if (!numeric) return;
-
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.textContent.replace(/[0-9]/g, '') || '+';
         let current = 0;
-        const increment = numeric / 50;
+        const step = Math.max(1, Math.floor(target / 40));
         const timer = setInterval(() => {
-            current += increment;
-            if (current >= numeric) {
-                el.textContent = numeric + suffix;
+            current += step;
+            if (current >= target) {
+                el.textContent = target + suffix;
                 clearInterval(timer);
             } else {
-                el.textContent = Math.floor(current) + suffix;
+                el.textContent = current + suffix;
             }
         }, 30);
     };
 
-    const statsObserver = new IntersectionObserver((entries) => {
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                statNumbers.forEach(stat => animateCounter(stat));
-                statsObserver.disconnect();
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
 
-    statsObserver.observe(heroStats);
+    statNums.forEach(n => counterObserver.observe(n));
 }
