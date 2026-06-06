@@ -36,7 +36,7 @@ PRODUCTS = [
     {"id": 2, "name": "Nigerian Rice", "price": 2200, "unit": "per congo", "image": "nigerian-rice.png", "category": "grains", "description": "Local Nigerian rice, affordable and nutritious"},
     {"id": 3, "name": "White Beans", "price": 1800, "unit": "per congo", "image": "white-beans.png", "category": "grains", "description": "Clean white beans for your daily meals"},
     {"id": 4, "name": "Garri", "price": 600, "unit": "per congo", "image": "garri.png", "category": "grains", "description": "Premium garri for eba and soaking"},
-    {"id": 5, "name": "Golden Penny Spaghetti", "price": 1100, "unit": "per pack", "image": "golden-penny-spaghetti.png", "category": "pasta", "description": "Quality spaghetti from Golden Penny"},
+    {"id": 5, "name": "Golden Penny Spaghetti", "price": 1100, "unit": "per pack", "image": "golden-penny-spaghetti.jpg", "category": "pasta", "description": "Quality spaghetti from Golden Penny"},
     {"id": 6, "name": "Crown Spaghetti", "price": 1100, "unit": "per pack", "image": "crown-spaghetti.png", "category": "pasta", "description": "Crown spaghetti, student favorite"},
     {"id": 7, "name": "Auntie B Spaghetti", "price": 900, "unit": "per pack", "image": "auntie-b-spaghetti.png", "category": "pasta", "description": "Affordable Auntie B spaghetti"},
     {"id": 8, "name": "Mama's Pride Spaghetti", "price": 900, "unit": "per pack", "image": "mamas_pride_spaghetti.png", "category": "pasta", "description": "Mama's Pride quality pasta"},
