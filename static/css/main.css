@@ -4,17 +4,22 @@
 
 /* 1. CSS Custom Properties / Design Tokens */
 :root {
-    /* Color Palette (Real client branding colors) */
-    --primary: #1B4D3E;       /* Deep Green */
-    --secondary: #D4AF37;     /* Gold Accent */
-    --accent: #F5F5DC;        /* Beige Accent */
-    --dark: #0F2E25;          /* Dark Green Hover/Footers */
-    --light: #FAFAF5;         /* Page Backgrounds */
-    --white: #FFFFFF;
-    --gray: #6B7280;
-    --light-gray: #F3F4F6;
-    --charcoal-dark: #1C201D;
-    --charcoal-light: #2C302D;
+    /* Color Palette (Real client branding colors v2) */
+    --primary: #1a5c3a;       /* Deep Forest Green */
+    --primary-dark: #124029;  /* Dark Green Hover/Footers */
+    --primary-light: #2d7a52; /* Light Green */
+    --secondary: #d4a843;     /* Warm Gold Accent */
+    --secondary-light: #f0d78c; /* Light Gold */
+    --secondary-dark: #b08d2f;  /* Dark Gold */
+    --accent: #faf9f6;        /* Beige Accent */
+    --dark: #124029;          /* Dark Green Hover/Footers */
+    --light: #faf9f6;         /* Page Backgrounds (Warm White) */
+    --bg-alt: #f0ede8;        /* Cream Background */
+    --white: #ffffff;
+    --gray: #6b7280;
+    --light-gray: #e5e2dc;    /* Border / Light Gray */
+    --charcoal-dark: #1a1a1a; /* Dark Text */
+    --charcoal-light: #4a4a4a;/* Light Text */
     
     /* Transparent Tints for Glassmorphism */
     --glass-bg-light: rgba(253, 251, 247, 0.8);
@@ -37,6 +42,10 @@
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-medium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Border Radii */
+    --radius-lg: 20px;
+    --radius-xl: 28px;
 }
 
 /* 2. Global Resets & Base Styles */
@@ -685,9 +694,276 @@ h1, h2, h3, h4, h5, h6 {
     
     .mobile-sticky-cta-bar { display: block; }
     body { padding-bottom: 74px; }
+    
+    /* Responsive integrations */
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .hero-stats { justify-content: center; }
 }
 
 @media (max-width: 414px) {
     .section-title { font-size: 1.85rem; }
     .footer-grid { grid-template-columns: 1fr; }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .stat-divider {
+        display: none;
+    }
 }
+
+/* ==========================================================================
+   V2 Integrations: Hero Badge, Stats, Testimonials & Chat Widget
+   ========================================================================== */
+
+/* Hero Badge & Dot */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(26, 92, 58, 0.08);
+    border: 1px solid rgba(26, 92, 58, 0.15);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary); /* Using secondary gold instead of v2 accent */
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* Hero Stats Section */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 35px;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--charcoal-light);
+    margin-top: 4px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--light-gray);
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.testimonials .container {
+    position: relative;
+    z-index: 2;
+}
+
+.testimonials .section-tag-light {
+    background: rgba(255,255,255,0.15);
+    color: var(--secondary-light);
+    padding: 6px 14px;
+    border-radius: 30px;
+}
+
+.testimonials .section-title {
+    color: var(--white);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: var(--transition-medium);
+}
+
+.testimonial-card:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.testimonial-stars {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    opacity: 0.95;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--secondary);
+    color: var(--primary-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.author-name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+.author-dept {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    color: var(--light-gray);
+}
+
+/* Chat Mockup Styles */
+.contact-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.whatsapp-chat-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 380px;
+    overflow: hidden;
+    border: 1px solid var(--light-gray);
+}
+
+.whatsapp-chat-card-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.whatsapp-chat-card-icon {
+    font-size: 1.5rem;
+}
+
+.whatsapp-chat-card-title {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.whatsapp-chat-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 250px;
+    background-color: #f7f9fa; /* Warm chat background color */
+}
+
+.chat-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    max-width: 85%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.chat-bubble.received {
+    background: #e0eedf; /* Mild warm green tint for Gadel Foods replies */
+    color: var(--charcoal-dark);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    animation-delay: 0.2s;
+    border: 1px solid rgba(27, 77, 62, 0.08);
+}
+
+.chat-bubble.sent {
+    background: var(--primary);
+    color: var(--white);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    animation-delay: 0.4s;
+}
+
+.whatsapp-chat-card-footer {
+    padding: 12px 24px;
+    border-top: 1px solid var(--light-gray);
+    text-align: center;
+    background: var(--white);
+}
+
+.typing {
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-style: italic;
+}
+
