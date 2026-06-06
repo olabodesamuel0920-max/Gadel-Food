@@ -68,24 +68,60 @@ PACKAGES = [
             {"name": "Salt", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300},
             {"name": "Maggi (Terra Small)", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300}
         ],
-        "image": "rice_bucket.jpg",
+        "image": "nigerian-rice.png",
         "description": "Perfect for students who need basic survival staples"
     },
     {
-        "id": "roommate",
-        "name": "Roommate Bundle",
-        "subtitle": "Shared Living",
-        "price": 21900,
+        "id": "essentials",
+        "name": "Student Essentials Pack",
+        "subtitle": "Perfect Monthly Pack",
+        "price": 16200,
         "items": [
-            {"name": "Nigerian Rice", "qty": "5 congos", "price": 11000, "qty_val": 5, "unit": "congo", "unit_price": 2200},
-            {"name": "Garri", "qty": "4 congos", "price": 2400, "qty_val": 4, "unit": "congo", "unit_price": 600},
+            {"name": "Foreign Rice", "qty": "3 congos", "price": 7500, "qty_val": 3, "unit": "congo", "unit_price": 2500},
+            {"name": "Garri", "qty": "3 congos", "price": 1800, "qty_val": 3, "unit": "congo", "unit_price": 600},
+            {"name": "White Beans", "qty": "2 congos", "price": 3600, "qty_val": 2, "unit": "congo", "unit_price": 1800},
+            {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100, "qty_val": 1, "unit": "bottle", "unit_price": 2100},
+            {"name": "Salt", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300},
+            {"name": "Maggi Chicken Flavour", "qty": "1 pack", "price": 600, "qty_val": 1, "unit": "pack", "unit_price": 600},
+            {"name": "Gino Peppered Chicken", "qty": "1 roll", "price": 900, "qty_val": 1, "unit": "roll", "unit_price": 900}
+        ],
+        "image": "white-beans.png",
+        "description": "A well-balanced selection of grains, proteins, and seasonings"
+    },
+    {
+        "id": "roommate",
+        "name": "Roommate Value Pack",
+        "subtitle": "Shared Living",
+        "price": 30300,
+        "items": [
+            {"name": "Foreign Rice", "qty": "5 congos", "price": 12500, "qty_val": 5, "unit": "congo", "unit_price": 2500},
+            {"name": "Garri", "qty": "5 congos", "price": 3000, "qty_val": 5, "unit": "congo", "unit_price": 600},
+            {"name": "White Beans", "qty": "3 congos", "price": 5400, "qty_val": 3, "unit": "congo", "unit_price": 1800},
             {"name": "Noodles (Half Carton)", "qty": "1 half", "price": 5500, "qty_val": 1, "unit": "half", "unit_price": 5500},
             {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100, "qty_val": 1, "unit": "bottle", "unit_price": 2100},
             {"name": "Salt", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300},
-            {"name": "Maggi (Chicken Flavour)", "qty": "1 pack", "price": 600, "qty_val": 1, "unit": "pack", "unit_price": 600}
+            {"name": "Maggi Chicken Flavour", "qty": "1 pack", "price": 600, "qty_val": 1, "unit": "pack", "unit_price": 600},
+            {"name": "Gino Peppered Chicken", "qty": "1 roll", "price": 900, "qty_val": 1, "unit": "roll", "unit_price": 900}
         ],
-        "image": "beans.jpg",
+        "image": "indomie.png",
         "description": "Combine budgets with your roommate for better rates"
+    },
+    {
+        "id": "custom",
+        "name": "Custom Pack",
+        "subtitle": "Build Your Own",
+        "price": 8500,
+        "items": [
+            {"name": "Nigerian Rice", "qty": "1 congo", "price": 2200, "qty_val": 1, "unit": "congo", "unit_price": 2200},
+            {"name": "Garri", "qty": "1 congo", "price": 600, "qty_val": 1, "unit": "congo", "unit_price": 600},
+            {"name": "White Beans", "qty": "1 congo", "price": 1800, "qty_val": 1, "unit": "congo", "unit_price": 1800},
+            {"name": "Spaghetti (Mama's Pride)", "qty": "1 pack", "price": 900, "qty_val": 1, "unit": "pack", "unit_price": 900},
+            {"name": "Groundnut Oil", "qty": "1 bottle", "price": 2100, "qty_val": 1, "unit": "bottle", "unit_price": 2100},
+            {"name": "Salt", "qty": "1 pack", "price": 300, "qty_val": 1, "unit": "pack", "unit_price": 300},
+            {"name": "Maggi Chicken Flavour", "qty": "1 pack", "price": 600, "qty_val": 1, "unit": "pack", "unit_price": 600}
+        ],
+        "image": "tasty-cubes.jpg",
+        "description": "Create a fully personalized setup tailored to your needs"
     }
 ]
 
