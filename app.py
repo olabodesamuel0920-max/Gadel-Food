@@ -44,8 +44,8 @@ PRODUCTS = [
     {"id": 10, "name": "Curry (1 roll)", "price": 900, "unit": "per roll", "image": "gino_peppered_chicken.jpg", "category": "seasoning", "description": "Curry seasoning for rich flavor"},
     {"id": 11, "name": "Thyme (1 roll)", "price": 900, "unit": "per roll", "image": "gino_party_jollof.jpg", "category": "seasoning", "description": "Thyme seasoning for aromatic dishes"},
     {"id": 12, "name": "Maggi Chicken Flavour", "price": 600, "unit": "per pack", "image": "tasty_cubes.jpg", "category": "seasoning", "description": "Maggi chicken seasoning cubes"},
-    {"id": 13, "name": "Salt", "price": 300, "unit": "per pack", "image": "gino_tomato.jpg", "category": "seasoning", "description": "Essential cooking salt"},
-    {"id": 14, "name": "Hot Pepper (1 roll)", "price": 700, "unit": "per roll", "image": "gino_pepper_onion.jpg", "category": "seasoning", "description": "Hot pepper for spicy dishes"},
+    {"id": 13, "name": "Salt", "price": 300, "unit": "per pack", "image": "salt.jpg", "category": "seasoning", "description": "Essential cooking salt"},
+    {"id": 14, "name": "Hot Pepper (1 roll)", "price": 700, "unit": "per roll", "image": "hot_pepper_powder.jpg", "category": "seasoning", "description": "Hot pepper for spicy dishes"},
     {"id": 15, "name": "Palm Oil (1 bottle)", "price": 1500, "unit": "per bottle", "image": "palm_oil.jpg", "category": "oil", "description": "Pure palm oil for cooking"},
     {"id": 16, "name": "Groundnut Oil (1 bottle)", "price": 2100, "unit": "per bottle", "image": "groundnut_oil.jpg", "category": "oil", "description": "Quality groundnut oil"}
 ]
