@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+
+{% block title %}Student Packages — {{ business.name }}{% endblock %}
+
+{% block styles %}
+<style>
+    .packages-section { padding: 120px 0 80px 0; }
+    .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    .package-card {
+        background: var(--white);
+        border-radius: 25px;
+        overflow: hidden;
+        transition: var(--transition-medium);
+        border: 2px solid transparent;
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow-soft);
+    }
+    .package-card:hover {
+        border-color: var(--secondary);
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+    }
+    .package-header {
+        padding: 30px;
+        background: var(--primary);
+        color: var(--white);
+    }
+    .package-header h3 { font-size: 1.5rem; margin-bottom: 5px; }
+    .package-header .subtitle { font-size: 0.9rem; opacity: 0.8; }
+    .package-price { font-size: 2.5rem; font-weight: 700; color: var(--secondary); margin-top: 15px; }
+    .package-price span { font-size: 1rem; color: var(--white); opacity: 0.7; }
+    
+    .package-body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .package-items { list-style: none; margin-bottom: 25px; flex-grow: 1; }
+    .package-items li {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        font-size: 0.95rem;
+    }
+    .package-items li:last-child { border-bottom: none; }
+    .package-items .item-name { color: var(--dark); font-weight: 500; }
+    .package-items .item-qty { color: var(--gray); font-size: 0.85rem; }
+    .package-items .item-price { color: var(--primary); font-weight: 600; }
+    
+    .btn-package {
+        width: 100%;
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 15px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        font-size: 15px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .btn-package:hover { background: var(--dark); }
+
+    .custom-package {
+        max-width: 800px;
+        margin: 60px auto 0;
+        background: var(--white);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(27, 77, 62, 0.06);
+    }
+    .custom-package h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; }
+    .custom-package p { color: var(--gray); margin-bottom: 25px; }
+
+    /* Pack Configurator Modal Overlay Styles */
+    .configurator-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .configurator-modal.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modal-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 46, 37, 0.65);
+        backdrop-filter: blur(8px);
+        z-index: 1;
+    }
+
+    .modal-container {
+        position: relative;
+        z-index: 2;
+        transform: translateY(30px);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .configurator-modal.active .modal-container {
+        transform: translateY(0);
+    }
+
+    .modal-item-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background-color: var(--white);
+        border: 1px solid rgba(27, 77, 62, 0.06);
+        cursor: pointer;
+        transition: var(--transition-fast);
+    }
+
+    .modal-item-checkbox:hover {
+        background-color: #EDF3EF;
+        border-color: rgba(27, 77, 62, 0.15);
+    }
+
+    .modal-item-checkbox input[type="checkbox"] {
+        accent-color: var(--primary);
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    .modal-item-label-text {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--charcoal-light);
+        flex-grow: 1;
+    }
+
+    .modal-item-price-tag {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="packages-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag-dark">CURATED CONFIGURATIONS</span>
+                <h1>Student Packages</h1>
+                <p>Curated bundles designed to match FUTA student budgets. Check individual items below, or customize checklists for a tailored WhatsApp quote.</p>
+            </div>
+            
+            <div class="packages-grid">
+                {% for package in packages %}
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>{{ package.name }}</h3>
+                        <div class="subtitle">{{ package.subtitle }}</div>
+                        <div class="package-price">
+                            ₦{{ "{:,}".format(package.price) }}
+                            <span>estimate</span>
+                        </div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-items">
+                            {% for item in package['items'] %}
+                            <li>
+                                <span class="item-name">{{ item.name }}</span>
+                                <span class="item-qty">{{ item.qty }}</span>
+                                <span class="item-price">₦{{ "{:,}".format(item.price) }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div style="display: flex; gap: 10px; margin-top: auto;">
+                            <button class="btn btn-outline-green" style="flex: 1; padding: 12px 10px; font-size: 0.85rem;" onclick="openConfigurator('{{ package.id }}')">
+                                <i class="fas fa-cog"></i> Customize
+                            </button>
+                            <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27m%20interested%20in%20the%20{{ package.name|urlencode }}%20(Est.%20₦{{ package.price|urlencode }})." class="btn btn-accent-gold" style="flex: 1.5; padding: 12px 10px; font-size: 0.85rem; text-align: center;" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Order Pack
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="custom-package">
+                <h3>Need a Custom Package?</h3>
+                <p>Can't find exactly what you're looking for? Send us your customized foodstuff shopping list, and our concierge will configure a personalized package that fits your constraints.</p>
+                <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27d%20like%20to%20request%20a%20custom%20foodstuff%20package.%20Here%20is%20my%20list%3A" class="btn btn-primary-green" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Request Custom Package
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reusable Premium Pack Configurator Drawer/Modal -->
+    <div class="configurator-modal" id="config-modal" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" onclick="closeConfigurator()"></div>
+        <div class="modal-container glass-card-white" style="background: var(--white); border-radius: 20px; box-shadow: var(--shadow-hover); max-width: 500px; width: 100%; z-index: 2001; position: relative;">
+            <div class="modal-header" style="padding: 20px 25px; border-bottom: 1px solid rgba(27,77,62,0.06); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span class="modal-tag" style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--secondary);">Customizer</span>
+                    <h3 class="modal-title" id="modal-pack-title" style="font-family: var(--font-heading); color: var(--primary); font-size: 1.4rem;">Configure Package</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closeConfigurator()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray);">✕</button>
+            </div>
+            
+            <div class="modal-warning-bar" style="background: #FFF5DC; color: #8C5B00; padding: 8px 25px; font-size: 0.75rem; font-weight: 600;">
+                📋 Tweak your checklist below. Final items/rates are verified on WhatsApp.
+            </div>
+
+            <div class="modal-body" style="padding: 20px 25px; overflow-y: auto; max-height: 50vh; display: flex; flex-direction: column; gap: 16px;">
+                <p class="modal-desc" id="modal-pack-desc" style="font-size: 0.85rem; color: var(--gray);">Choose items to include in your order inquiry checklist.</p>
+                
+                <div class="items-selection-header" style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
+                    <span>Foodstuff Checklist:</span>
+                    <button class="select-all-btn" id="modal-select-all" onclick="toggleAllItems()" style="background: none; border: none; color: var(--primary); cursor: pointer; font-weight: 700;">Deselect All</button>
+                </div>
+                
+                <!-- Dynamic Items Container -->
+                <div class="modal-items-list" id="modal-items-container" style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- Loaded dynamically via JavaScript -->
+                </div>
+                
+                <div class="modal-summary-box" style="background-color: var(--dark); padding: 15px 20px; border-radius: 12px; color: var(--white); margin-top: 15px;">
+                    <div class="summary-line" style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                        <span>Total Items Selected:</span>
+                        <strong id="modal-selected-count">0</strong>
+                    </div>
+                    <div class="summary-line font-large" style="display: flex; justify-content: space-between; font-size: 1.1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-top: 8px; font-weight: 700;">
+                        <span>Estimated Cost:</span>
+                        <strong class="text-gold" id="modal-estimated-price" style="color: var(--secondary);">₦0</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer" style="padding: 20px 25px; border-top: 1px solid rgba(27,77,62,0.06); display: flex; gap: 10px;">
+                <button class="btn btn-outline-green" onclick="closeConfigurator()" style="flex: 1;">Cancel</button>
+                <a href="#" target="_blank" class="btn btn-accent-gold" id="modal-whatsapp-inquiry" style="flex: 1.5; color: var(--dark); font-weight: 700;">
+                    <i class="fab fa-whatsapp"></i> Inquire Sourcing
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    /* ==========================================================================
+       Pack Configurator Script - Fed dynamically from Flask packages data
+       ========================================================================== */
+    const BUNDLE_ITEMS_DATA = {
+        {% for package in packages %}
+        "{{ package.id }}": {
+            title: "{{ package.name }} Customizer",
+            desc: "{{ package.description }}",
+            items: [
+                {% for item in package['items'] %}
+                { id: "{{ package.id }}-item-{{ loop.index }}", name: "{{ item.name }} ({{ item.qty }})", price: {{ item.price }}, checked: true },
+                {% endfor %}
+            ]
+        },
+        {% endfor %}
+    };
+
+    let activePackId = '';
+    let activePackItems = [];
+
+    window.openConfigurator = function(packId) {
+        if (!BUNDLE_ITEMS_DATA[packId]) return;
+        
+        activePackId = packId;
+        activePackItems = JSON.parse(JSON.stringify(BUNDLE_ITEMS_DATA[packId].items)); // Deep clone static data
+        
+        // Set headers
+        document.getElementById('modal-pack-title').textContent = BUNDLE_ITEMS_DATA[packId].title;
+        document.getElementById('modal-pack-desc').textContent = BUNDLE_ITEMS_DATA[packId].desc;
+        
+        renderModalItems();
+        
+        // Open modal
+        const modal = document.getElementById('config-modal');
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Lock main scroll
+    };
+
+    window.closeConfigurator = function() {
+        const modal = document.getElementById('config-modal');
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto'; // Unlock main scroll
+    };
+
+    function renderModalItems() {
+        const container = document.getElementById('modal-items-container');
+        container.innerHTML = '';
+        
+        activePackItems.forEach((item, index) => {
+            const itemLabel = document.createElement('label');
+            itemLabel.className = 'modal-item-checkbox';
+            
+            const checkboxInput = document.createElement('input');
+            checkboxInput.type = 'checkbox';
+            checkboxInput.checked = item.checked;
+            checkboxInput.addEventListener('change', () => {
+                activePackItems[index].checked = checkboxInput.checked;
+                updateModalCalculations();
+            });
+            
+            const labelText = document.createElement('span');
+            labelText.className = 'modal-item-label-text';
+            labelText.textContent = item.name;
+            
+            const priceTag = document.createElement('span');
+            priceTag.className = 'modal-item-price-tag';
+            priceTag.textContent = `₦${item.price.toLocaleString()}`;
+            
+            itemLabel.appendChild(checkboxInput);
+            itemLabel.appendChild(labelText);
+            itemLabel.appendChild(priceTag);
+            
+            container.appendChild(itemLabel);
+        });
+        
+        updateModalCalculations();
+    }
+
+    function updateModalCalculations() {
+        const selectedCountEl = document.getElementById('modal-selected-count');
+        const estimatedPriceEl = document.getElementById('modal-estimated-price');
+        const selectAllBtn = document.getElementById('modal-select-all');
+        const modalCta = document.getElementById('modal-whatsapp-inquiry');
+        
+        let selectedCount = 0;
+        let totalPrice = 0;
+        let checklistText = '';
+        
+        activePackItems.forEach(item => {
+            if (item.checked) {
+                selectedCount++;
+                totalPrice += item.price;
+                checklistText += `[✓] ${item.name}\n`;
+            } else {
+                checklistText += `[x] ${item.name} (Swapped/Removed)\n`;
+            }
+        });
+        
+        selectedCountEl.textContent = selectedCount;
+        estimatedPriceEl.textContent = `₦${totalPrice.toLocaleString()} (Est. Range)`;
+        
+        // Toggle Select All wording
+        const allChecked = activePackItems.every(i => i.checked);
+        selectAllBtn.textContent = allChecked ? "Deselect All" : "Select All";
+        
+        // WhatsApp Inquiry compose
+        const packName = BUNDLE_ITEMS_DATA[activePackId].title.replace(" Customizer", "");
+        const whatsappNumber = "{{ business.whatsapp }}";
+        
+        const textMessage = `Hi Gadel Foods! 🌾 I configured a custom version of the ${packName} on your website.
+
+Here is my preferred checklist request:
+${checklistText}
+Estimated Cost Range: ₦${totalPrice.toLocaleString()}
+
+*Can you please confirm current stock availability and official price calculations for this configuration?*`;
+
+        modalCta.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
+    }
+
+    window.toggleAllItems = function() {
+        const allChecked = activePackItems.every(i => i.checked);
+        activePackItems.forEach(item => {
+            item.checked = !allChecked;
+        });
+        renderModalItems();
+    };
+</script>
+{% endblock %}

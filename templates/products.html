@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Our Products — {{ business.name }}{% endblock %}
+
+{% block styles %}
+<style>
+    .page-header {
+        padding: 140px 0 50px 0;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+        color: var(--white);
+        text-align: center;
+    }
+    .page-header h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px; color: var(--white); }
+    .page-header p { opacity: 0.8; max-width: 600px; margin: 0 auto; }
+
+    .filter-bar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 24px 20px 24px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .filter-btn {
+        padding: 10px 24px;
+        border-radius: 25px;
+        border: 2px solid var(--primary);
+        background: transparent;
+        color: var(--primary);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    .filter-btn.active, .filter-btn:hover {
+        background: var(--primary);
+        color: var(--white);
+    }
+
+    .products-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 24px 80px 24px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 30px;
+    }
+    .product-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: var(--transition-medium);
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(27, 77, 62, 0.04);
+        display: flex;
+        flex-direction: column;
+    }
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(27, 77, 62, 0.1);
+    }
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: var(--transition-medium);
+    }
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+    .product-info {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .product-category {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--secondary);
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .product-name {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 8px;
+    }
+    .product-desc {
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-bottom: 20px;
+        flex-grow: 1;
+        height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+    }
+    .product-price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    .product-price span {
+        font-size: 0.85rem;
+        color: var(--gray);
+        font-weight: 400;
+    }
+    .btn-add {
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 8px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        transition: var(--transition-fast);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .btn-add:hover {
+        background: var(--dark);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Quality foodstuffs at student-friendly prices. Fresh, affordable, and coordinated for pickup around FUTA.</p>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <a href="/products" class="filter-btn {{ 'active' if category == 'all' else '' }}">All</a>
+        <a href="/products?category=grains" class="filter-btn {{ 'active' if category == 'grains' else '' }}">Grains</a>
+        <a href="/products?category=pasta" class="filter-btn {{ 'active' if category == 'pasta' else '' }}">Pasta</a>
+        <a href="/products?category=noodles" class="filter-btn {{ 'active' if category == 'noodles' else '' }}">Noodles</a>
+        <a href="/products?category=seasoning" class="filter-btn {{ 'active' if category == 'seasoning' else '' }}">Seasoning</a>
+        <a href="/products?category=oil" class="filter-btn {{ 'active' if category == 'oil' else '' }}">Oil</a>
+    </div>
+
+    <div class="products-grid">
+        {% for product in products %}
+        <div class="product-card fade-in-target">
+            <img src="/static/images/{{ product.image }}" alt="{{ product.name }}" class="product-image">
+            <div class="product-info">
+                <div class="product-category">{{ product.category }}</div>
+                <h3 class="product-name">{{ product.name }}</h3>
+                <p class="product-desc">{{ product.description }}</p>
+                <div class="product-footer">
+                    <div class="product-price">
+                        ₦{{ "{:,}".format(product.price) }}
+                        <span>/ {{ product.unit }}</span>
+                    </div>
+                    <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27m%20interested%20in%20ordering%20{{ product.name|urlencode }}%20(₦{{ product.price|urlencode }}%20{{ product.unit|urlencode }})." class="btn-add" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

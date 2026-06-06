@@ -1,0 +1,1486 @@
+{% extends "base.html" %}
+
+{% block title %}Gadel Foods — Premium Foodstuff Concierge for FUTA Students{% endblock %}
+
+{% block styles %}
+<style>
+    /* Hero Section Specific Styles */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 140px 0 80px 0;
+        background: linear-gradient(135deg, var(--light) 0%, #E8F5E9 50%, var(--light) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+    }
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1.1;
+        color: var(--primary);
+        margin-bottom: 20px;
+    }
+    .hero-content h1 span {
+        color: var(--secondary);
+        font-style: italic;
+    }
+    .hero-subtitle {
+        font-size: 1.15rem;
+        color: var(--gray);
+        margin-bottom: 30px;
+        max-width: 500px;
+    }
+    .hero-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 35px;
+    }
+    .feature-tag {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        padding: 10px 18px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--charcoal-dark);
+        box-shadow: var(--shadow-soft);
+    }
+    .feature-tag i { color: var(--secondary); }
+    .hero-cta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .hero-image {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hero-image img {
+        width: 100%;
+        max-width: 440px;
+        border-radius: 20px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    }
+    .floating-card {
+        position: absolute;
+        background: var(--white);
+        padding: 15px 20px;
+        border-radius: 15px;
+        box-shadow: var(--shadow-medium);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 10;
+    }
+    .floating-card.left {
+        left: -20px;
+        bottom: 80px;
+        animation: float 3s ease-in-out infinite;
+    }
+    .floating-card.right {
+        right: -20px;
+        top: 60px;
+        animation: float 3s ease-in-out infinite 0.5s;
+    }
+    .floating-card i {
+        font-size: 24px;
+        color: var(--secondary);
+    }
+    .floating-card span {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--dark);
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* Services Section Specific Styles */
+    .services {
+        padding: 80px 0;
+        background: var(--white);
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+    .service-card {
+        background: var(--light);
+        padding: 40px 30px;
+        border-radius: 20px;
+        transition: var(--transition-medium);
+        border: 1px solid transparent;
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: rgba(27,77,62,0.1);
+    }
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .service-icon i {
+        font-size: 24px;
+        color: var(--secondary);
+    }
+    .service-card h3 {
+        font-size: 1.3rem;
+        color: var(--primary);
+        margin-bottom: 12px;
+    }
+    .service-card p {
+        color: var(--gray);
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    /* Products Section Specific Styles */
+    .products {
+        padding: 80px 0;
+        background: var(--light);
+    }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 25px;
+    }
+    .product-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: var(--transition-medium);
+        box-shadow: var(--shadow-soft);
+    }
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+    }
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: var(--transition-medium);
+    }
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+    .product-info {
+        padding: 25px;
+    }
+    .product-category {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--secondary);
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .product-name {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 8px;
+    }
+    .product-desc {
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-bottom: 15px;
+        height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .product-price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    .product-price span {
+        font-size: 0.85rem;
+        color: var(--gray);
+        font-weight: 400;
+    }
+    .btn-add {
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 8px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        transition: var(--transition-fast);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .btn-add:hover {
+        background: var(--dark);
+    }
+
+    /* Packages Section Specific Styles */
+    .packages {
+        padding: 80px 0;
+        background: var(--white);
+    }
+    .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 30px;
+    }
+    .package-card {
+        background: var(--light);
+        border-radius: 25px;
+        overflow: hidden;
+        transition: var(--transition-medium);
+        border: 2px solid transparent;
+        display: flex;
+        flex-direction: column;
+    }
+    .package-card:hover {
+        border-color: var(--secondary);
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+    }
+    .package-header {
+        padding: 30px;
+        background: var(--primary);
+        color: var(--white);
+    }
+    .package-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    .package-header .subtitle {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    .package-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-top: 15px;
+    }
+    .package-price span {
+        font-size: 1rem;
+        color: var(--white);
+        opacity: 0.7;
+    }
+    .package-body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .package-items {
+        list-style: none;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+    .package-items li {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        font-size: 0.95rem;
+    }
+    .package-items li:last-child { border-bottom: none; }
+    .package-items .item-name { color: var(--dark); font-weight: 500; }
+    .package-items .item-qty { color: var(--gray); font-size: 0.85rem; }
+    .package-items .item-price { color: var(--primary); font-weight: 600; }
+    .btn-package {
+        width: 100%;
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 15px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        font-size: 15px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .btn-package:hover { background: var(--dark); }
+
+    /* Budget Simulator Specific Styles */
+    .calculator-wrapper {
+        box-shadow: var(--shadow-hover);
+        border: 1px solid rgba(27, 77, 62, 0.12);
+        border-radius: 20px;
+        padding: 30px;
+        background: var(--white);
+    }
+    .calculator-header {
+        text-align: center;
+        margin-bottom: 24px;
+        border-bottom: 1px solid rgba(27, 77, 62, 0.06);
+        padding-bottom: 20px;
+    }
+    .calc-badge {
+        background-color: #EAF2EE;
+        color: var(--primary);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+    .calculator-header h3 {
+        font-family: var(--font-heading);
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    .calc-warning {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--secondary);
+        margin-top: 4px;
+    }
+    .calc-body {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .calc-control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .calc-label {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--primary);
+    }
+    .calc-label strong {
+        color: var(--primary);
+        font-size: 1.15rem;
+        font-family: var(--font-heading);
+    }
+    .slider-input {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 6px;
+        background: #E0E7E3;
+        border-radius: 5px;
+        outline: none;
+    }
+    .slider-input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--secondary);
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        transition: var(--transition-fast);
+    }
+    .slider-input::-webkit-slider-thumb:hover {
+        background: var(--primary);
+        transform: scale(1.1);
+    }
+    .slider-ticks {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: var(--gray);
+        font-weight: 500;
+    }
+    .preference-options, .arrangement-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    .arrangement-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .preference-btn, .arrangement-btn {
+        border: 1px solid rgba(27, 77, 62, 0.1);
+        background-color: var(--white);
+        border-radius: 12px;
+        padding: 10px 6px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: var(--transition-fast);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: var(--charcoal-light);
+    }
+    .preference-btn input, .arrangement-btn input {
+        display: none;
+    }
+    .preference-btn:hover, .arrangement-btn:hover {
+        background-color: var(--light);
+        border-color: var(--primary);
+    }
+    .preference-btn.active, .arrangement-btn.active {
+        background-color: var(--primary);
+        color: var(--white);
+        border-color: var(--primary);
+    }
+    .arr-content strong {
+        display: block;
+        font-size: 0.85rem;
+    }
+    .arr-content small {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+    .preference-btn.active span,
+    .arrangement-btn.active .arr-content strong,
+    .arrangement-btn.active .arr-content small {
+        color: var(--white);
+    }
+    .calc-result-box {
+        background-color: var(--dark) !important;
+        padding: 20px;
+        border-radius: 14px;
+        color: var(--white);
+    }
+    .result-box-header {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--secondary);
+        display: block;
+        margin-bottom: 12px;
+    }
+    .result-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .result-item {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    .result-lbl {
+        color: rgba(255,255,255,0.6);
+        font-weight: 500;
+    }
+    .result-item strong {
+        font-family: var(--font-heading);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--white);
+    }
+    .result-item span {
+        color: #EAF2EE;
+        font-weight: 500;
+    }
+    .calc-demo-notice {
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.4);
+        margin-top: 12px;
+        line-height: 1.3;
+    }
+
+    /* How It Works Specific Styles */
+    .how-it-works {
+        padding: 80px 0;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+        color: var(--white);
+    }
+    .how-it-works .section-header h2,
+    .how-it-works .section-header p {
+        color: var(--white);
+    }
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 40px;
+    }
+    .step-card {
+        text-align: center;
+        padding: 30px;
+    }
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--secondary);
+        color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 20px;
+    }
+    .step-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    .step-card p {
+        opacity: 0.8;
+        font-size: 0.95rem;
+    }
+
+    /* Why Choose Us Specific Styles */
+    .why-us {
+        padding: 80px 0;
+        background: var(--light);
+    }
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+    }
+    .why-card {
+        background: var(--white);
+        padding: 35px 25px;
+        border-radius: 15px;
+        text-align: center;
+        transition: var(--transition-medium);
+    }
+    .why-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-medium);
+    }
+    .why-card i {
+        font-size: 32px;
+        color: var(--secondary);
+        margin-bottom: 15px;
+    }
+    .why-card h4 {
+        font-size: 1.1rem;
+        color: var(--primary);
+        margin-bottom: 10px;
+    }
+    .why-card p {
+        font-size: 0.9rem;
+        color: var(--gray);
+    }
+
+    /* Location / Map Switcher Specific Styles */
+    .location {
+        padding: 80px 0;
+        background: var(--white);
+    }
+    .location-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+    .location-info h3 {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+    }
+    .location-list {
+        list-style: none;
+        margin-bottom: 30px;
+    }
+    .location-list li {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    .location-list i {
+        color: var(--secondary);
+        font-size: 20px;
+    }
+    .hours-box {
+        background: var(--light);
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .hours-box h4 {
+        color: var(--primary);
+        margin-bottom: 15px;
+    }
+    .hours-box p {
+        color: var(--gray);
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+    
+    /* Interactive CSS Map nodes styling */
+    .mock-map-container {
+        border: 1px solid rgba(27,77,62,0.08);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+    }
+    .map-header {
+        background-color: var(--light-gray);
+        padding: 12px 20px;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid rgba(27,77,62,0.06);
+    }
+    .dot-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+    .dot-indicator.green {
+        background-color: var(--secondary);
+        animation: pulsing 1.2s infinite;
+    }
+    .map-body-graphic {
+        background-color: #EDF3EF;
+        height: 320px;
+        position: relative;
+        overflow: hidden;
+    }
+    .map-node {
+        position: absolute;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 10;
+    }
+    .node-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        border: 3px solid var(--white);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        transition: var(--transition-fast);
+    }
+    .pulse-ring {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgba(27, 77, 62, 0.2);
+        top: -8px;
+        animation: radarPulse 2s infinite;
+    }
+    .node-label {
+        background: var(--white);
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        margin-top: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        white-space: nowrap;
+        color: var(--dark);
+        transition: var(--transition-fast);
+        border: 1px solid rgba(27,77,62,0.04);
+    }
+    .map-node.active .node-dot {
+        background-color: var(--secondary);
+    }
+    .map-node.active .pulse-ring {
+        background-color: rgba(212, 175, 55, 0.3);
+    }
+    .map-node.active .node-label {
+        background-color: var(--dark);
+        color: var(--white);
+        transform: translateY(-2px);
+    }
+    .node-north { top: 25%; left: 30%; }
+    .node-south { bottom: 25%; right: 25%; }
+    .node-west { top: 45%; left: 15%; }
+    .node-offcampus { top: 35%; right: 35%; }
+    .map-legend {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background-color: rgba(255,255,255,0.85);
+        backdrop-filter: blur(4px);
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--gray);
+    }
+    @keyframes pulsing {
+        0% { opacity: 0.4; }
+        50% { opacity: 1; }
+        100% { opacity: 0.4; }
+    }
+    
+    /* CTA Section Specific Styles */
+    .cta {
+        padding: 100px 0;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+        text-align: center;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
+    .cta .container {
+        position: relative;
+        z-index: 2;
+    }
+    .cta h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 20px;
+        color: var(--white);
+    }
+    .cta p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto 35px;
+    }
+    .cta .btn-primary-green {
+        background: var(--secondary);
+        color: var(--dark);
+        font-size: 1.1rem;
+        padding: 18px 45px;
+    }
+    .cta .btn-primary-green:hover {
+        background: var(--white);
+        color: var(--primary);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Foodstuff Shopping,<br><span>Made Easier</span> for FUTA Students</h1>
+                <p class="hero-subtitle">
+                    Bulk buying, budget guidance, and stress-free ordering — all through a simple, 
+                    high-end WhatsApp-first concierge experience.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-tag">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Built for FUTA Students</span>
+                    </div>
+                    <div class="feature-tag">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Budget-friendly Planning</span>
+                    </div>
+                    <div class="feature-tag">
+                        <i class="fas fa-boxes"></i>
+                        <span>Bulk Buying Support</span>
+                    </div>
+                    <div class="feature-tag">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp-first Ordering</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="/packages" class="btn btn-lg btn-accent-gold">
+                        <i class="fas fa-shopping-basket"></i> View Packages
+                    </a>
+                    <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27m%20interested%20in%20discussing%20sourcing%20foodstuffs%20around%20FUTA." class="btn btn-lg btn-outline-green" style="border-color: var(--primary); color: var(--primary);" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/static/images/rice_bucket.jpg" alt="Gadel Foods Premium Foodstuffs">
+                <div class="floating-card left">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Quality Assured</span>
+                </div>
+                <div class="floating-card right">
+                    <i class="fas fa-truck"></i>
+                    <span>Campus Delivery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header text-center fade-in-target">
+                <span class="section-tag-dark">WHAT WE HELP WITH</span>
+                <h2>Smart Foodstuff Solutions</h2>
+                <p>Comprehensive foodstuff options designed specifically for the needs of FUTA students</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in-target">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <h3>Bulk Foodstuff Buying</h3>
+                    <p>We source staple foodstuffs like grains, tubers, and cooking oils. Share the load and cost with classmates or roommates to get bulk rates.</p>
+                </div>
+                <div class="service-card fade-in-target">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Budget Consultation</h3>
+                    <p>Tell us what your allowance looks like, and we'll suggest a customized layout of essential foodstuffs to ensure you eat balanced meals all month.</p>
+                </div>
+                <div class="service-card fade-in-target">
+                    <div class="service-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Student-Friendly Packages</h3>
+                    <p>Pre-arranged, thoughtfully structured packages designed around the typical student kitchen setup and dietary needs.</p>
+                </div>
+                <div class="service-card fade-in-target">
+                    <div class="service-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Ordering</h3>
+                    <p>No complex checkout systems or heavy apps. Discuss your needs, confirm real-time pricing and stock, and coordinate pickup or delivery on WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header text-center fade-in-target">
+                <span class="section-tag-dark">PREMIUM STAPLES</span>
+                <h2>Featured Products</h2>
+                <p>Quality foodstuffs at student-friendly prices. All items are sourced fresh and coordinated for pickup.</p>
+            </div>
+            <div class="products-grid">
+                {% for product in products[:8] %}
+                <div class="product-card fade-in-target">
+                    <img src="/static/images/{{ product.image }}" alt="{{ product.name }}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">{{ product.category }}</div>
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <p class="product-desc">{{ product.description }}</p>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                ₦{{ "{:,}".format(product.price) }}
+                                <span>/ {{ product.unit }}</span>
+                            </div>
+                            <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27m%20interested%20in%20ordering%20{{ product.name|urlencode }}%20(₦{{ product.price|urlencode }}%20{{ product.unit|urlencode }})." class="btn-add" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div style="text-align: center; margin-top: 40px;" class="fade-in-target">
+                <a href="/products" class="btn btn-primary-green">
+                    <i class="fas fa-th-large"></i> View All Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-header text-center fade-in-target">
+                <span class="section-tag-dark">CURATED BUNDLES</span>
+                <h2>Student Packages</h2>
+                <p>Curated bundles designed to match different student needs and budgets. Items are customizable.</p>
+            </div>
+            <div class="packages-grid">
+                {% for package in packages %}
+                <div class="package-card fade-in-target">
+                    <div class="package-header">
+                        <h3>{{ package.name }}</h3>
+                        <div class="subtitle">{{ package.subtitle }}</div>
+                        <div class="package-price">
+                            ₦{{ "{:,}".format(package.price) }}
+                            <span>estimate</span>
+                        </div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-items">
+                            {% for item in package['items'] %}
+                            <li>
+                                <span class="item-name">{{ item.name }}</span>
+                                <span class="item-qty">{{ item.qty }}</span>
+                                <span class="item-price">₦{{ "{:,}".format(item.price) }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div style="display: flex; gap: 10px; margin-top: auto;">
+                            <a href="/packages" class="btn btn-outline-green" style="flex: 1; padding: 12px 10px; font-size: 0.85rem; text-align: center;">
+                                <i class="fas fa-cog"></i> Customize Pack
+                            </a>
+                            <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27m%20interested%20in%20the%20{{ package.name|urlencode }}%20(Est.%20₦{{ package.price|urlencode }})." class="btn btn-accent-gold" style="flex: 1.5; padding: 12px 10px; font-size: 0.85rem; text-align: center;" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Consultation / Simulator Section -->
+    <section class="section section-cream" id="budget-consult">
+        <div class="container">
+            <div class="grid grid-2-1 align-center">
+                <div class="budget-info fade-in-target">
+                    <span class="section-tag-dark">PERSONALIZED ESTIMATES</span>
+                    <h2 class="section-title text-charcoal">Not sure what your budget can cover?</h2>
+                    <p class="section-subtitle text-charcoal-muted" style="margin-bottom: 24px;">
+                        Input your target budget, preference, and arrangement. Our simulator recommends a realistic set of foodstuffs using real-time market estimates.
+                    </p>
+                    
+                    <div class="budget-bullet-list" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="bullet-item" style="display: flex; gap: 16px; align-items: flex-start;">
+                            <span class="bullet-check" style="background-color: var(--primary); color: var(--white); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                            <div>
+                                <strong>Lightweight & Dynamic:</strong> Test budget ranges between ₦15,000 and ₦60,000+ to see conceptual breakdowns.
+                            </div>
+                        </div>
+                        <div class="bullet-item" style="display: flex; gap: 16px; align-items: flex-start;">
+                            <span class="bullet-check" style="background-color: var(--primary); color: var(--white); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                            <div>
+                                <strong>WhatsApp Routing:</strong> Generate a pre-composed message detailing your selections to easily discuss adjustments with Gadel Foods.
+                            </div>
+                        </div>
+                        <div class="bullet-item" style="display: flex; gap: 16px; align-items: flex-start;">
+                            <span class="bullet-check" style="background-color: var(--primary); color: var(--white); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0;">✓</span>
+                            <div>
+                                <strong>Flexible Swapping:</strong> Settle on a package size and swap ingredients to fit your specific grocery requirements.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Budget Simulator Widget -->
+                <div class="calculator-wrapper fade-in-target" id="budget-widget">
+                    <div class="calculator-header">
+                        <span class="calc-badge">📊 Foodstuff Budget Simulator</span>
+                        <h3>Estimate Your Setup</h3>
+                        <p class="calc-warning">Interactive Estimation Tool</p>
+                    </div>
+                    
+                    <div class="calc-body">
+                        <!-- Budget Slider -->
+                        <div class="calc-control-group">
+                            <label for="budget-slider" class="calc-label">
+                                <span>Target Budget (₦):</span>
+                                <strong id="budget-display">₦25,000</strong>
+                            </label>
+                            <input type="range" id="budget-slider" min="15000" max="60000" step="5000" value="25000" class="slider-input">
+                            <div class="slider-ticks">
+                                <span>₦15k</span>
+                                <span>₦30k</span>
+                                <span>₦45k</span>
+                                <span>₦60k</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Food Preference -->
+                        <div class="calc-control-group">
+                            <label class="calc-label">Food Preference:</label>
+                            <div class="preference-options">
+                                <label class="preference-btn active">
+                                    <input type="radio" name="preference" value="staples" checked>
+                                    <span>Balanced Mix</span>
+                                </label>
+                                <label class="preference-btn">
+                                    <input type="radio" name="preference" value="swallows" style="display:none;">
+                                    <span>Swallows</span>
+                                </label>
+                                <label class="preference-btn">
+                                    <input type="radio" name="preference" value="quick" style="display:none;">
+                                    <span>Rice & Pasta</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Student Arrangement -->
+                        <div class="calc-control-group">
+                            <label class="calc-label">Arrangement:</label>
+                            <div class="arrangement-grid">
+                                <label class="arrangement-btn active">
+                                    <input type="radio" name="arrangement" value="solo" checked>
+                                    <div class="arr-content">
+                                        <strong>Solo</strong>
+                                        <small>Just for me</small>
+                                    </div>
+                                </label>
+                                <label class="arrangement-btn">
+                                    <input type="radio" name="arrangement" value="duo" style="display:none;">
+                                    <div class="arr-content">
+                                        <strong>Duo</strong>
+                                        <small>With Roommate</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Simulation Result Preview -->
+                        <div class="calc-result-box">
+                            <span class="result-box-header">💡 Estimated Setup Recommendation</span>
+                            <div class="result-details">
+                                <div class="result-item">
+                                    <span class="result-lbl">Recommended Blueprint:</span>
+                                    <strong id="rec-blueprint-name" class="text-gold">Standard Student Setup</strong>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-lbl">Estimated Grains & Tubers:</span>
+                                    <span id="rec-grains">Rice, Garri, Beans</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-lbl">Estimated Oils & Liquids:</span>
+                                    <span id="rec-liquids">Palm Oil, Vegetable Oil</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-lbl">Suggested Extras:</span>
+                                    <span id="rec-extras">Salt, Seasoning Cubes</span>
+                                </div>
+                            </div>
+                            <p class="calc-demo-notice">*Sample configuration. Gadel Foods will adjust quantities based on market rates when you message.*</p>
+                        </div>
+                        
+                        <!-- CTA Routing -->
+                        <a href="#" target="_blank" class="btn btn-accent-gold btn-full" id="calc-whatsapp-cta">
+                            <i class="fab fa-whatsapp"></i> Send Budget Setup to WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header text-center fade-in-target">
+                <h2>How It Works</h2>
+                <p>Simple steps to get your foodstuffs coordinated around campus</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card fade-in-target">
+                    <div class="step-number">1</div>
+                    <h3>Submit Your Budget</h3>
+                    <p>Use our budget simulator or send your custom foodstuff shopping list directly on WhatsApp.</p>
+                </div>
+                <div class="step-card fade-in-target">
+                    <div class="step-number">2</div>
+                    <h3>Select a Package</h3>
+                    <p>Choose from our preset packages or customize the item checklists to fit your preferences.</p>
+                </div>
+                <div class="step-card fade-in-target">
+                    <div class="step-number">3</div>
+                    <h3>Confirm Price</h3>
+                    <p>Our concierge responds with direct market updates, confirms availability, and shares final pricing.</p>
+                </div>
+                <div class="step-card fade-in-target">
+                    <div class="step-number">4</div>
+                    <h3>Campus Handover</h3>
+                    <p>Coordinate convenient pickup at FUTA gates or discuss dropoff to your off-campus hostel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header text-center fade-in-target">
+                <h2>Why Choose Gadel Foods?</h2>
+                <p>The smart choice for FUTA students who value quality, convenience, and savings</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card fade-in-target">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Reduces Market Stress</h4>
+                    <p>Avoid crowded Akure markets. Let our team do the physical footwork for you.</p>
+                </div>
+                <div class="why-card fade-in-target">
+                    <i class="fas fa-piggy-bank"></i>
+                    <h4>Helps You Plan Better</h4>
+                    <p>Stop impulse buying. Map out your monthly feeding allowance in advance.</p>
+                </div>
+                <div class="why-card fade-in-target">
+                    <i class="fas fa-users"></i>
+                    <h4>Supports Bulk Buying</h4>
+                    <p>Split large food bags with roommates to obtain lower per-unit costs.</p>
+                </div>
+                <div class="why-card fade-in-target">
+                    <i class="fas fa-clock"></i>
+                    <h4>Saves Academic Time</h4>
+                    <p>Reclaim hours of market shopping to focus on your studies.</p>
+                </div>
+                <div class="why-card fade-in-target">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Human Concierge</h4>
+                    <p>No complicated checkout. Talk to a real person instantly via WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / Map Switcher Section -->
+    <section class="location">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-info fade-in-target">
+                    <h3>Service Areas</h3>
+                    <p style="color: var(--gray); margin-bottom: 25px;">We coordinate deliveries and pickup zones across these student locations:</p>
+                    <ul class="location-list">
+                        {% for area in service_areas %}
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong style="color: var(--primary);">{{ area.name }}</strong>
+                                <span style="display: block; font-size: 0.85rem; color: var(--gray);">{{ area.type|title }} Coordination</span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="hours-box">
+                        <h4><i class="far fa-clock" style="margin-right: 8px;"></i>Opening Hours</h4>
+                        <p><strong>Monday - Friday:</strong> {{ opening_hours.monday_friday }}</p>
+                        <p><strong>Saturday:</strong> {{ opening_hours.saturday }}</p>
+                        <p><strong>Sunday:</strong> {{ opening_hours.sunday }}</p>
+                    </div>
+                    
+                    <!-- Zone detail panel switcher -->
+                    <div class="zone-details-card glass-card-white" id="zone-details-box" style="margin-top: 30px; padding: 24px;">
+                        <h4 id="zone-title" class="text-green" style="font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">🏫 South Gate Area (Hostel Hub)</h4>
+                        <p id="zone-description" style="font-size: 0.9rem; color: var(--charcoal-light); margin-bottom: 16px;">Excellent pickup point for students living in South Gate hostels, Apatapiti, and close off-campus apartments. Simple handovers coordinated easily on WhatsApp.</p>
+                        <div class="zone-meta-tags" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="zone-tag" style="background-color: #EDF3EF; color: var(--primary); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Standard Pickup Hub</span>
+                            <span class="zone-tag" id="zone-status" style="background-color: #EDF3EF; color: var(--primary); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Flexible Handover coordination</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-map fade-in-target" style="background: none; box-shadow: none; height: auto;">
+                    <div class="mock-map-container">
+                        <div class="map-header">
+                            <span class="dot-indicator green"></span>
+                            <strong>FUTA Student Pickup Areas Map</strong>
+                        </div>
+                        <div class="map-body-graphic">
+                            <div class="map-node node-north" onclick="selectZone('north')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">North Gate</span>
+                            </div>
+                            <div class="map-node node-south active" onclick="selectZone('south')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">South Gate</span>
+                            </div>
+                            <div class="map-node node-west" onclick="selectZone('west')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">West Gate</span>
+                            </div>
+                            <div class="map-node node-offcampus" onclick="selectZone('offcampus')">
+                                <span class="pulse-ring"></span>
+                                <span class="node-dot"></span>
+                                <span class="node-label">Obanla / Apatapiti</span>
+                            </div>
+                            
+                            <div class="map-legend">
+                                <span>📍 Click node to view setup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Shop Foodstuffs with Less Stress?</h2>
+            <p>View our student packages, adjust item checklists, estimate what your allowance can support, and finalize everything directly with Gadel Foods on WhatsApp.</p>
+            <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%27m%20ready%20to%20shop%20foodstuffs%20smarter.%20Please%20guide%20me%20on%20current%20rates%20and%20availabilities." class="btn btn-lg btn-accent-gold" target="_blank">
+                <i class="fab fa-whatsapp"></i> Message Gadel Foods on WhatsApp
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    /* ==========================================================================
+       1. Budget Simulator Data & Engine
+       ========================================================================== */
+    const BUDGET_DATABASE = {
+        low: {
+            staples: {
+                name: "Basic Grains & Oil Mix",
+                grains: "Nigerian Rice (2 congos), Garri (2 congos), White Beans (1 congo)",
+                liquids: "Groundnut Oil (1 bottle)",
+                extras: "Maggi Pack, Salt"
+            },
+            swallows: {
+                name: "Classic Swallow Pack",
+                grains: "Garri (6 congos), White Beans (2 congos)",
+                liquids: "Palm Oil (1 bottle)",
+                extras: "Maggi Pack, Salt"
+            },
+            quick: {
+                name: "Quick Cook Pasta & Noodles",
+                grains: "Auntie B Spaghetti (3 packs), Indomie Table (10 packs est)",
+                liquids: "Groundnut Oil (1 bottle)",
+                extras: "Maggi Pack, Curry"
+            }
+        },
+        medium: {
+            staples: {
+                name: "Standard Student Starter Pack",
+                grains: "Nigerian Rice (3 congos), Garri (4 congos), White Beans (2 congos)",
+                liquids: "Groundnut Oil (1 bottle), Palm Oil (1 bottle)",
+                extras: "Mama's Pride Spaghetti (2 packs), Seasoning Pack"
+            },
+            swallows: {
+                name: "Swallow & Soup Bulk Pack",
+                grains: "Garri (10 congos), White Beans (4 congos)",
+                liquids: "Palm Oil (2 bottles)",
+                extras: "Maggi Chicken Pack, Salt, Hot Pepper"
+            },
+            quick: {
+                name: "Fast Cook Pasta & Noodles Bundle",
+                grains: "Crown Spaghetti (4 packs), Indomie Table (1/2 Carton)",
+                liquids: "Groundnut Oil (1 bottle)",
+                extras: "Maggi Chicken Pack, Curry"
+            }
+        },
+        high: {
+            staples: {
+                name: "Premium Roommate Bulk Pack",
+                grains: "Foreign Rice (6 congos), Garri (8 congos), White Beans (4 congos)",
+                liquids: "Groundnut Oil (2 bottles), Palm Oil (2 bottles)",
+                extras: "Mama's Pride Spaghetti (4 packs), Full Seasoning Set"
+            },
+            swallows: {
+                name: "Heavy Swallow & Grains Feast",
+                grains: "Garri (15 congos), White Beans (8 congos)",
+                liquids: "Palm Oil (4 bottles)",
+                extras: "Maggi Chicken Pack, Salt, Hot Pepper (2 rolls)"
+            },
+            quick: {
+                name: "Mega Noodles & Pasta Supply",
+                grains: "Indomie Table (1 Full Carton), Golden Penny Spaghetti (6 packs)",
+                liquids: "Groundnut Oil (2 bottles)",
+                extras: "Maggi Chicken, Curry/Thyme, Hot Pepper"
+            }
+        }
+    };
+
+    function initBudgetSimulator() {
+        const budgetSlider = document.getElementById('budget-slider');
+        const budgetDisplay = document.getElementById('budget-display');
+        const preferenceRadios = document.getElementsByName('preference');
+        const arrangementRadios = document.getElementsByName('arrangement');
+        
+        const recBlueprintName = document.getElementById('rec-blueprint-name');
+        const recGrains = document.getElementById('rec-grains');
+        const recLiquids = document.getElementById('rec-liquids');
+        const recExtras = document.getElementById('rec-extras');
+        const calcWhatsappCta = document.getElementById('calc-whatsapp-cta');
+
+        const whatsappNumber = "{{ business.whatsapp }}";
+
+        function updateSimulation() {
+            if (!budgetSlider) return;
+            const budgetValue = parseInt(budgetSlider.value);
+            budgetDisplay.textContent = `₦${budgetValue.toLocaleString()}`;
+
+            let tier = 'medium';
+            if (budgetValue <= 20000) {
+                tier = 'low';
+            } else if (budgetValue >= 45000) {
+                tier = 'high';
+            }
+
+            let preference = 'staples';
+            for (const radio of preferenceRadios) {
+                if (radio.checked) {
+                    preference = radio.value;
+                    radio.parentElement.classList.add('active');
+                } else {
+                    radio.parentElement.classList.remove('active');
+                }
+            }
+
+            let arrangement = 'solo';
+            for (const radio of arrangementRadios) {
+                if (radio.checked) {
+                    arrangement = radio.value;
+                    radio.parentElement.classList.add('active');
+                } else {
+                    radio.parentElement.classList.remove('active');
+                }
+            }
+
+            const layout = BUDGET_DATABASE[tier][preference];
+            
+            let displayName = layout.name;
+            if (arrangement === 'duo') {
+                displayName = "Duo " + displayName;
+            }
+
+            recBlueprintName.textContent = displayName;
+            recGrains.textContent = layout.grains;
+            recLiquids.textContent = layout.liquids;
+            recExtras.textContent = layout.extras;
+
+            const prefText = preference === 'staples' ? 'Balanced Grains & Staples' : (preference === 'swallows' ? 'Swallows & Soups' : 'Pasta & Instant Cook');
+            const arrText = arrangement === 'solo' ? 'Solo Student Setup' : 'Duo Roommate Shared Setup';
+
+            const textMessage = `Hi Gadel Foods! 🌾 I used the Budget Simulator on your launch site to estimate a setup.
+Here is my request summary:
+- Estimated Budget Range: ₦${budgetValue.toLocaleString()}
+- Sharing Arrangement: ${arrText}
+- Food Preference: ${prefText}
+
+Suggested Blueprint:
+- Estimated Pack: ${displayName}
+- Est. Grains & Tubers: ${layout.grains}
+- Est. Oils & Condiments: ${layout.liquids}
+- Est. Extras: ${layout.extras}
+
+*Please let me know if this estimated setup is feasible, and what the final prices are based on current market rates.*`;
+
+            calcWhatsappCta.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
+        }
+
+        if (budgetSlider) {
+            budgetSlider.addEventListener('input', updateSimulation);
+            
+            const preferenceLabels = document.querySelectorAll('.preference-btn');
+            preferenceLabels.forEach(label => {
+                const input = label.querySelector('input');
+                if (input) {
+                    input.addEventListener('change', () => {
+                        preferenceLabels.forEach(l => l.classList.remove('active'));
+                        label.classList.add('active');
+                        input.checked = true;
+                        updateSimulation();
+                    });
+                }
+            });
+
+            const arrangementLabels = document.querySelectorAll('.arrangement-btn');
+            arrangementLabels.forEach(label => {
+                const input = label.querySelector('input');
+                if (input) {
+                    input.addEventListener('change', () => {
+                        arrangementLabels.forEach(l => l.classList.remove('active'));
+                        label.classList.add('active');
+                        input.checked = true;
+                        updateSimulation();
+                    });
+                }
+            });
+
+            updateSimulation();
+        }
+    }
+
+    /* ==========================================================================
+       2. FUTA Pickup/Delivery Zone Switcher
+       ========================================================================== */
+    const ZONE_DATABASE = {
+        north: {
+            title: "🏫 North Gate Area (Campus Boundary)",
+            desc: "Ideal handover location for students residing in Obanla, North Gate close compounds, or exiting campus after late labs. Easily schedule a pickup on WhatsApp.",
+            tag: "North Gate Coordination Hub"
+        },
+        south: {
+            title: "🏫 South Gate Area (Hostel Hub)",
+            desc: "Excellent pickup point for students living in South Gate hostels, Apatapiti, and close off-campus apartments. Simple handovers coordinated easily on WhatsApp.",
+            tag: "South Gate Coordination Hub"
+        },
+        west: {
+            title: "🏫 West Gate Area (Residency Hub)",
+            desc: "Serves off-campus hostels around West Gate and surrounding residential loops. Inquire on WhatsApp to map out a convenient meeting coordinate.",
+            tag: "West Gate Coordination Point"
+        },
+        offcampus: {
+            title: "🏡 Obanla / Apatapiti Core Student Areas",
+            desc: "For heavy bulk orders (like the Roommate Bulk Pack), we help coordinate custom drop-off negotiations to hostels near the central off-campus roads. Talk with Gadel Foods on WhatsApp.",
+            tag: "Hostel Drop-off Negotiation"
+        }
+    };
+
+    window.selectZone = function(zoneId) {
+        if (!ZONE_DATABASE[zoneId]) return;
+        
+        const nodes = document.querySelectorAll('.map-node');
+        nodes.forEach(node => {
+            node.classList.remove('active');
+            if (node.classList.contains(`node-${zoneId}`)) {
+                node.classList.add('active');
+            }
+        });
+        
+        const titleEl = document.getElementById('zone-title');
+        const descEl = document.getElementById('zone-description');
+        const statusEl = document.getElementById('zone-status');
+        const detailsBox = document.getElementById('zone-details-box');
+        
+        detailsBox.style.opacity = '0.4';
+        
+        setTimeout(() => {
+            titleEl.textContent = ZONE_DATABASE[zoneId].title;
+            descEl.textContent = ZONE_DATABASE[zoneId].desc;
+            statusEl.textContent = ZONE_DATABASE[zoneId].tag;
+            detailsBox.style.opacity = '1';
+        }, 150);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initBudgetSimulator();
+    });
+</script>
+{% endblock %}

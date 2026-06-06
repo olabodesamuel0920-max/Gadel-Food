@@ -1,0 +1,21 @@
+{
+  "name": "Gadel Foods - Premium Foodstuff Concierge",
+  "short_name": "Gadel Foods",
+  "description": "Quality foodstuffs for FUTA students. WhatsApp ordering, campus delivery.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF5",
+  "theme_color": "#1B4D3E",
+  "icons": [
+    {
+      "src": "/static/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

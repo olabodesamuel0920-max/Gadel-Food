@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title and SEO tags -->
+    <title>{% block title %}{{ business.name }} — {{ business.tagline }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ business.description }}{% endblock %}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% block og_title %}{{ business.name }} — {{ business.tagline }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ business.description }}{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://{{ business.domain }}/">
+    <meta property="og:image" content="https://{{ business.domain }}/static/og/og-image.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ business.name }}">
+    <meta name="twitter:description" content="{{ business.description }}">
+    <meta name="twitter:image" content="https://{{ business.domain }}/static/og/twitter-card.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Global CSS Stylesheet -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    
+    <!-- Local Business Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodService",
+      "name": "{{ business.name }}",
+      "description": "{{ business.description }}",
+      "url": "https://{{ business.domain }}/",
+      "telephone": "+234{{ business.whatsapp }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Akure",
+        "addressRegion": "Ondo State",
+        "addressCountry": "NG"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Federal University of Technology, Akure (FUTA)"
+      },
+      "priceRange": "$$"
+    }
+    </script>
+    
+    <!-- Optional Analytics Integration Hooks (Disabled by Default) -->
+    {% block analytics %}
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <script>
+      !fjs=d.getElementsByTagName(s)[0];
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'XXXXXXXXXXXXXXXX');
+      fbq('track', 'PageView');
+    </script>
+    
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "xxxxxxxxxx");
+    </script>
+    -->
+    {% endblock %}
+    
+    <!-- Page Specific Styles Block -->
+    {% block styles %}{% endblock %}
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="navbar">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">G</div>
+                <span class="logo-text">{{ business.name }}</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-links">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/products" class="nav-item">Products</a>
+                <a href="/packages" class="nav-item">Packages</a>
+                <a href="/about" class="nav-item">About</a>
+                <a href="/contact" class="nav-item">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%20saw%20your%20website%20and%20would%20like%20to%20order%20some%20foodstuffs." target="_blank" class="btn btn-header btn-primary-green" id="header-whatsapp-cta">
+                    <i class="fab fa-whatsapp"></i> Message Concierge
+                </a>
+                
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Specific Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo" style="margin-bottom: 20px;">
+                    <div class="logo-icon" style="background: var(--secondary); color: var(--primary);">G</div>
+                    <span class="logo-text" style="color: var(--white);">{{ business.name }}</span>
+                </a>
+                <p class="footer-desc text-cream-muted">
+                    {{ business.description }}
+                </p>
+                <div class="social-links">
+                    <a href="https://wa.me/{{ business.whatsapp }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4 class="footer-title text-white">Quick Links</h4>
+                <a href="/" class="footer-link">Home</a>
+                <a href="/products" class="footer-link">Products</a>
+                <a href="/packages" class="footer-link">Packages</a>
+                <a href="/about" class="footer-link">About Us</a>
+            </div>
+
+            <div class="footer-contact">
+                <h4 class="footer-title text-white">Contact & Support</h4>
+                <p class="text-cream-muted"><i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--secondary);"></i>{{ business.contact }}</p>
+                <p class="text-cream-muted"><i class="fab fa-whatsapp" style="margin-right: 8px; color: var(--secondary);"></i><a href="https://wa.me/{{ business.whatsapp }}" target="_blank" style="color: var(--secondary); text-decoration: none;">Chat on WhatsApp</a></p>
+                <p class="text-cream-muted"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--secondary);"></i>{{ business.email }}</p>
+                <p class="text-cream-muted"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--secondary);"></i>Akure, Ondo State, Nigeria</p>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <div class="disclaimer-box text-center">
+                <p class="text-cream-muted" style="font-size: 12px; line-height: 1.5; opacity: 0.8;">
+                    ⚠️ <strong>Notice & Disclaimer:</strong> Gadel Foods is a custom foodstuff concierge. Listed items, quantities, and prices (demo estimates) are subject to change and must be confirmed directly with Gadel Foods on WhatsApp before placing an order. We make no claims of direct checkout, online card payments, or statutory pricing.
+                </p>
+            </div>
+            <div class="footer-copyright text-center text-cream-muted" style="margin-top: 20px; font-size: 12px; opacity: 0.6;">
+                &copy; {{ current_year }} {{ business.name }}. All rights reserved. Built for FUTA Student Commerce.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile WhatsApp CTA -->
+    <div class="mobile-sticky-cta-bar" id="mobile-cta-bar">
+        <a href="https://wa.me/{{ business.whatsapp }}?text=Hi%20Gadel%20Foods%21%20%F0%9F%8C%BE%20I%20am%20a%20FUTA%20student%20and%20I%27d%20like%20to%20discuss%20custom%20foodstuff%20sourcing%20and%20budget%20estimates." target="_blank" class="sticky-whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp Sourcing Concierge
+        </a>
+    </div>
+
+    <!-- Global JavaScript File -->
+    <script src="/static/js/main.js"></script>
+    
+    <!-- Page Specific Scripts Block -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>
