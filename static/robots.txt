@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gadelfoods.com/static/sitemap.xml
+Sitemap: https://gadelfoods.com/sitemap.xml
 
 # Gadel Foods - Premium Foodstuff Concierge for FUTA Students
 # Contact: info@gadelfoods.com
