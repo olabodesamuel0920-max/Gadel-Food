@@ -177,7 +177,8 @@
     }
     .product-image {
         width: 100%;
-        height: 250px;
+        height: auto;
+        aspect-ratio: 1 / 1;
         object-fit: cover;
         transition: var(--transition-medium);
     }
@@ -796,7 +797,7 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    Trusted by 500+ FUTA Students
+                    Built for FUTA Students
                 </div>
                 <h1>Foodstuff Shopping,<br><span>Made Easier</span> for FUTA Students</h1>
                 <p class="hero-subtitle">
@@ -831,15 +832,15 @@
                 </div>
                  <div class="stats-row">
                     <div class="stat">
-                        <strong class="stat-num" data-target="500">500+</strong>
-                        <span class="stat-label">Happy Students</span>
+                        <span class="stat-num" data-target="500">0</span>
+                        <span class="stat-label">Happy Students Target</span>
                     </div>
                     <div class="stat">
-                        <strong class="stat-num" data-target="50">50+</strong>
-                        <span class="stat-label">Products</span>
+                        <span class="stat-num" data-target="16">0</span>
+                        <span class="stat-label">Products Available</span>
                     </div>
                     <div class="stat">
-                        <strong class="stat-num" data-target="24">24h</strong>
+                        <span class="stat-num" data-target="24">0</span>
                         <span class="stat-label">Hour Delivery</span>
                     </div>
                 </div>
@@ -908,9 +909,9 @@
                 <p>Quality foodstuffs at student-friendly prices. All items are sourced fresh and coordinated for pickup.</p>
             </div>
             <div class="products-grid">
-                {% for product in products[:8] %}
+                {% for product in products %}
                 <div class="product-card fade-in-target">
-                    <img src="/static/images/{{ product.image }}" alt="{{ product.name }}" class="product-image">
+                    <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}" class="product-image" loading="lazy" width="400" height="400">
                     <div class="product-info">
                         <div class="product-category">{{ product.category }}</div>
                         <h3 class="product-name">{{ product.name }}</h3>
@@ -1292,44 +1293,55 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials">
+    <section class="testimonials section-dark-green">
         <div class="container">
             <div class="section-header text-center fade-in-target">
-                <span class="section-tag-light">Testimonials</span>
-                <h2>What Students Say</h2>
-                <p>Hear from FUTA students who order their foodstuffs from Gadel Foods</p>
+                <span class="section-tag-light">Early Feedback</span>
+                <h2 class="section-title">What Students Are Saying</h2>
+                <p class="section-subtitle text-cream-muted">
+                    Be the first to share your experience with Gadel Foods. Your feedback helps us serve FUTA students better.
+                </p>
             </div>
             <div class="testimonials-grid">
+                <!-- Card 1: Invitation -->
                 <div class="testimonial-card fade-in-target">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Gadel Foods saved me during exam period. I didn't have to leave my hostel — everything was delivered within hours. The quality is top notch!"</p>
+                    <div class="testimonial-stars"></div>
+                    <p class="testimonial-text">
+                        "We're just getting started at Gadel Foods, and we can't wait to hear about your experience. Order your first package and tell us how we did!"
+                    </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
+                        <div class="author-avatar">G</div>
                         <div class="author-info">
-                            <span class="author-name">Adebola, 300L</span>
-                            <span class="author-dept">Mechanical Engineering</span>
+                            <span class="author-name">Gadel Foods Team</span>
+                            <span class="author-dept">Your Food Concierge</span>
                         </div>
                     </div>
                 </div>
+                <!-- Card 2: Invitation -->
                 <div class="testimonial-card fade-in-target">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"The Roommate Bundle is a lifesaver. We split the cost three ways and got enough foodstuff to last almost the whole semester."</p>
+                    <div class="testimonial-stars"></div>
+                    <p class="testimonial-text">
+                        "Have you tried our Roommate Bundle or Starter Pack? We'd love to feature your review here. Message us on WhatsApp after your order!"
+                    </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">C</div>
+                        <div class="author-avatar" style="background: var(--secondary-light); color: var(--primary-dark);">S</div>
                         <div class="author-info">
-                            <span class="author-name">Chioma, 200L</span>
-                            <span class="author-dept">Computer Science</span>
+                            <span class="author-name">Share Your Story</span>
+                            <span class="author-dept">FUTA Student</span>
                         </div>
                     </div>
                 </div>
+                <!-- Card 3: Invitation -->
                 <div class="testimonial-card fade-in-target">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"I love the WhatsApp ordering. No app to download, no registration stress. Just text and get your food. Simple and effective."</p>
+                    <div class="testimonial-stars"></div>
+                    <p class="testimonial-text">
+                        "Quality foodstuffs, fair prices, and campus delivery — that's our promise. Try us out and join the growing community of smart FUTA shoppers."
+                    </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">T</div>
+                        <div class="author-avatar" style="background: var(--primary-light); color: white;">F</div>
                         <div class="author-info">
-                            <span class="author-name">Tunde, 400L</span>
-                            <span class="author-dept">Electrical Engineering</span>
+                            <span class="author-name">First Order?</span>
+                            <span class="author-dept">Get Started Today</span>
                         </div>
                     </div>
                 </div>

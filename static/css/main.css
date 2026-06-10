@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 16px;
 }
 
 .text-center { text-align: center; }
@@ -216,7 +216,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: 2.75rem;
+    font-size: 1.85rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 20px;
@@ -447,10 +447,22 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--secondary);
 }
 
+/* Mobile menu base */
 .nav-menu {
-    display: flex;
-    gap: 30px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70vw;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--dark);
+    flex-direction: column;
+    padding: 100px 30px;
+    transition: var(--transition-medium);
+    z-index: 998;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.25);
 }
+.nav-menu.active { right: 0; }
 
 .nav-item {
     font-family: var(--font-body);
@@ -489,18 +501,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile Nav Toggle */
 .mobile-menu-toggle {
-    display: none;
+    display: flex;
+    width: 44px; /* Touch target minimum */
+    height: 44px;
+    padding: 10px;
     background: none;
     border: none;
     cursor: pointer;
     flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
 }
 
 .mobile-menu-toggle .bar {
-    width: 100%;
+    width: 24px;
     height: 2px;
     background-color: var(--white);
     border-radius: 2px;
@@ -651,81 +666,91 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 7. Responsive Adjustments */
-@media (max-width: 992px) {
-    .section-title { font-size: 2.25rem; }
-    .grid-3 { grid-template-columns: repeat(2, 1fr); }
-    .grid-2-1 { grid-template-columns: 1fr; }
+/* Mobile: horizontal scroll carousel */
+.packages-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px 24px;
+    margin: 20px -24px 0 -24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.packages-grid::-webkit-scrollbar { display: none; }
+.package-card {
+    flex-shrink: 0;
+    width: 85vw;
+    max-width: 320px;
+    scroll-snap-align: center;
+}
+
+/* ============================================
+   TABLET (480px+)
+   ============================================ */
+@media (min-width: 480px) {
+    .grid-2-2 { grid-template-columns: repeat(2, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: span 2; }
 }
 
-@media (max-width: 768px) {
-    .section { padding: 60px 0; }
-    .section-header { margin-bottom: 40px; }
+/* ============================================
+   TABLET LANDSCAPE / SMALL LAPTOP (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+    .section { padding: 80px 0; }
+    .section-title { font-size: 2.25rem; }
     
-    .mobile-menu-toggle { display: flex; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-2-1 { grid-template-columns: 2fr 1fr; gap: 50px; }
     
     .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        height: 100vh;
-        background-color: var(--dark);
-        flex-direction: column;
-        padding: 100px 40px;
-        transition: var(--transition-medium);
-        z-index: 998;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.25);
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        flex-direction: row;
+        padding: 0;
+        box-shadow: none;
+        display: flex;
+        gap: 30px;
     }
+    .mobile-menu-toggle { display: none; }
+    .mobile-sticky-cta-bar { display: none; }
+    body { padding-bottom: 0; }
     
-    .nav-menu.active { right: 0; }
-    
-    .mobile-toggle-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .mobile-toggle-active .bar:nth-child(2) { opacity: 0; }
-    .mobile-toggle-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    
-    .header-actions { display: flex; align-items: center; }
-    .header-actions .btn-header { display: none; }
-    .nav-item { font-size: 1.25rem; }
-    
-    .grid-3, .grid-2-2 { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.5fr; }
     .footer-brand { grid-column: span 1; }
     
-    .mobile-sticky-cta-bar { display: block; }
-    body { padding-bottom: 74px; }
-    
-    /* Responsive integrations */
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .stats-row { justify-content: center; }
-
-    /* Packages Horizontal Swipe Carousel */
     .packages-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        gap: 20px !important;
-        padding: 20px 24px !important;
-        margin: 20px -24px 0 -24px !important;
-        -webkit-overflow-scrolling: touch !important;
-        scrollbar-width: none; /* Hide scrollbar */
-        grid-template-columns: none !important;
-    }
-    .packages-grid::-webkit-scrollbar {
-        display: none; /* Hide scrollbar */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow-x: visible;
+        margin: 0;
+        padding: 0;
     }
     .package-card {
-        flex-shrink: 0 !important;
-        width: 85vw !important;
-        max-width: 320px !important;
-        scroll-snap-align: center !important;
+        width: auto;
+        max-width: none;
     }
 }
 
-@media (max-width: 414px) {
-    .section-title { font-size: 1.85rem; }
-    .footer-grid { grid-template-columns: 1fr; }
+/* ============================================
+   DESKTOP (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+    .section { padding: 100px 0; }
+    .section-title { font-size: 2.75rem; }
+    
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .packages-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================
+   LARGE DESKTOP (1280px+)
+   ============================================ */
+@media (min-width: 1280px) {
+    .container { max-width: 1200px; }
 }
 
 /* ==========================================================================
@@ -1043,106 +1068,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* ==========================================================================
-   Mobile Experience Enhancement Pass (Responsive Viewports Audit)
-   ========================================================================== */
 
-/* Spacing and typography adjustments for mobile viewports (<= 430px) */
-@media (max-width: 430px) {
-    .container {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-    
-    .hero h1 {
-        font-size: 2.1rem !important;
-        line-height: 1.2 !important;
-    }
-    
-    .section-title, h2 {
-        font-size: 1.8rem !important;
-        line-height: 1.25 !important;
-    }
-
-    .hero-subtitle, .section-header p {
-        font-size: 0.9rem !important;
-    }
-
-    .packages-grid {
-        margin: 20px -16px 0 -16px !important;
-        padding: 10px 16px !important;
-        gap: 16px !important;
-    }
-
-    .package-card {
-        width: 82vw !important;
-        max-width: 290px !important;
-    }
-
-    /* Grid layout stack overrides */
-    .grid-2-2, .grid-3, .footer-grid, .location-grid, .location-list {
-        grid-template-columns: 1fr !important;
-        gap: 24px !important;
-    }
-}
-
-/* Spacing adjustments for iPhone XR/11/XS Max (<= 414px) */
-@media (max-width: 414px) {
-    .hero h1 {
-        font-size: 2rem !important;
-    }
-    
-    .section-title, h2 {
-        font-size: 1.7rem !important;
-    }
-}
-
-/* Spacing adjustments for iPhone 12/13/14/15 (<= 390px) */
-@media (max-width: 390px) {
-    .hero h1 {
-        font-size: 1.85rem !important;
-    }
-
-    .section-title, h2 {
-        font-size: 1.6rem !important;
-    }
-
-    .package-card {
-        max-width: 275px !important;
-    }
-}
-
-/* Spacing adjustments for iPhone X/12 Mini (<= 375px) */
-@media (max-width: 375px) {
-    .hero h1 {
-        font-size: 1.75rem !important;
-    }
-
-    .section-title, h2 {
-        font-size: 1.5rem !important;
-    }
-
-    .package-card {
-        max-width: 265px !important;
-    }
-}
-
-/* Tablet viewport refinements (<= 768px) */
-@media (max-width: 768px) {
-    .hero-grid {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-    }
-    
-    .hero-image {
-        max-width: 100% !important;
-        margin: 0 auto !important;
-    }
-    
-    .about-section .grid-2-2, .contact-section .grid-2-2 {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-    }
-}
 
 

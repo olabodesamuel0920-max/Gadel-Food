@@ -6,24 +6,32 @@
     
     <!-- Title and SEO tags -->
     <title>{% block title %}{{ business.name }} — {{ business.tagline }}{% endblock %}</title>
-    <meta name="description" content="{% block description %}{{ business.description }}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Gadel Foods — Premium foodstuff concierge for FUTA students. Bulk buying, budget guidance, and WhatsApp-first ordering.{% endblock %}">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{% block og_title %}{{ business.name }} — {{ business.tagline }}{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}{{ business.description }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Premium foodstuff concierge for FUTA students. Order via WhatsApp.{% endblock %}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://{{ business.domain }}/">
+    <meta property="og:url" content="https://{{ business.domain }}{{ request.path }}">
     <meta property="og:image" content="https://{{ business.domain }}/static/og/og-image.png">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ business.name }}">
-    <meta name="twitter:description" content="{{ business.description }}">
+    <meta name="twitter:description" content="{% block og_description_twitter %}Premium foodstuff concierge for FUTA students. Order via WhatsApp.{% endblock %}">
     <meta name="twitter:image" content="https://{{ business.domain }}/static/og/twitter-card.png">
     
-    <!-- Google Fonts -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="{{ url_for('static', filename='images/hero-rice.png') }}">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons (Font Awesome) -->
@@ -36,22 +44,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FoodService",
+      "@type": "LocalBusiness",
       "name": "{{ business.name }}",
-      "description": "{{ business.description }}",
+      "description": "Premium foodstuff concierge for FUTA students. Bulk buying, budget guidance, and campus delivery.",
       "url": "https://{{ business.domain }}/",
       "telephone": "+{{ business.whatsapp }}",
+      "email": "{{ business.email }}",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Akure",
         "addressRegion": "Ondo State",
         "addressCountry": "NG"
       },
-      "areaServed": {
-        "@type": "AdministrativeArea",
-        "name": "Federal University of Technology, Akure (FUTA)"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "7.2571",
+        "longitude": "5.2058"
       },
-      "priceRange": "$$"
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "₦",
+      "paymentAccepted": "Cash, Bank Transfer",
+      "currenciesAccepted": "NGN"
     }
     </script>
     
