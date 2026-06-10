@@ -1143,6 +1143,38 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr !important;
         gap: 40px !important;
     }
+
+    /* Testimonials stack layout override */
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    .testimonial-card {
+        padding: 24px 20px !important;
+    }
+}
+
+/* Stats Row Mobile Alignment Override */
+@media (max-width: 480px) {
+    .stats-row {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        text-align: center !important;
+        margin-top: 24px !important;
+        justify-content: center !important;
+    }
+    .stat {
+        align-items: center !important;
+    }
+    .stat-num {
+        font-size: 1.45rem !important;
+    }
+    .stat-label {
+        font-size: 0.72rem !important;
+        margin-top: 4px !important;
+        line-height: 1.3 !important;
+    }
 }
 
 

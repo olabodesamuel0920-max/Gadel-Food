@@ -130,7 +130,7 @@ function initStatsCounter() {
 
     const animateCounter = (el) => {
         const target = parseInt(el.dataset.target, 10);
-        const suffix = el.textContent.replace(/[0-9]/g, '') || '+';
+        const suffix = el.textContent.replace(/[0-9]/g, '');
         let current = 0;
         
         // Set initial starting text for count-up animation
